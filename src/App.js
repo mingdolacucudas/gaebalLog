@@ -1,11 +1,12 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Detail from "./components/pages/Detail";
+
+import Post from "./components/pages/Post";
 
 function App() {
   return (
     <div>
-      <Detail />
+      <Post></Post>
     </div>
   );
 }
