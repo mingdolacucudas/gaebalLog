@@ -1,25 +1,23 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-const Main = () => {
+const LogList = () => {
   const navi = useNavigate();
 
   return (
     <div>
-      <h6>-Main-</h6>
       <Father>
         <RecordBtn
           onClick={() => {
-            navi("/Record");
+            navi("/post");
           }}
         >
           기록하기
         </RecordBtn>
         <TempBox
           onClick={() => {
-            navi("/info");
+            navi("/detail");
           }}
         >
           <div>
@@ -67,4 +65,4 @@ const TempBox = styled.button`
   flex-wrap: wrap;
   margin-top: 10px;
 `;
-export default Main;
+export default LogList;
