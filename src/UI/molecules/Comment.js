@@ -1,14 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-const Commit = () => {
-  const navi = useNavigate();
-
+const Comment = () => {
   return (
     <div>
-      <h6>-Commit-</h6>
-      댓글목록페이지<button onClick={() => navi("/")}> 홈으로</button>
       <div>
         <input type="text" placeholder="이름"></input>
         <input type="text" placeholder="댓글내용"></input>
@@ -24,4 +19,4 @@ const TempCommit = styled.div`
   overflow: scroll;
   background-color: teal;
 `;
-export default Commit;
+export default Comment;
