@@ -1,3 +1,4 @@
+import { PostSuccessBtn } from "../atoms/PostSuccessBtn";
 const PostForm = () => {
   return (
     <form>
@@ -9,7 +10,7 @@ const PostForm = () => {
       <textarea placeholder="body..." required />
       <label>사진올리기</label>
       <input type="file" accept="image/*" />
-      <button>작성완료!!</button>
+      <PostSuccessBtn />
     </form>
   );
 };
