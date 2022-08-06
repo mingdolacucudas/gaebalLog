@@ -5,11 +5,14 @@ const Header = () => {
   const navi = useNavigate();
   return (
     <Headerbox>
-      <button onClick={() => navi("/")}> 홈으로</button>
+      <div>
+        <button onClick={() => navi(-1)}>뒤로가기</button>
 
-      <Logo src="/gaelogLogo.png"></Logo>
+        <button onClick={() => navi("/")}> 홈으로</button>
+      </div>
 
-      <button onClick={() => navi(-1)}>뒤로가기</button>
+      <Logo src="/gaelogLogo.png" onClick={() => navi("/")}></Logo>
+      <button onClick={() => navi("/post")}>글작성하기</button>
     </Headerbox>
   );
 };
@@ -19,6 +22,8 @@ const Headerbox = styled.header`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin-bottom: 60px;
+  margin-top: 20px;
 `;
 const Logo = styled.img`
   width: 14rem;

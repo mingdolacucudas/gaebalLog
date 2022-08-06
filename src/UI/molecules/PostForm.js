@@ -17,16 +17,27 @@ const PostForm = () => {
   let navigate = useNavigate();
   const REGNICKNAME = /^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,16}$/;
   const [toggle, setToggle] = useState(false);
-  //!여기부터 서버가져오기
-  //todo 데이터를 가져오는데 오래걸린다. 로딩중 화면 띄우기
   let [dbData, setDbData] = useState();
   let [idNumber, setIdNumber] = useState(0);
-  useEffect(() => {
-    axios.get("http://localhost:4000/gaebalog").then((res) => {
+  //!then버전
+  //useEffect(() => {
+  //   axios.get("http://localhost:4000/gaebalog").then((res) => {
+  //     setDbData(res.data);
+  //     console.log(res.data);
+  //     setIdNumber(res.data.length + 1);
+  //   });
+  // }, []);
+  //!async버전
+  async function getData() {
+    try {
+      const res = await axios.get("http://localhost:4000/gaebalog");
       setDbData(res.data);
       setIdNumber(res.data.length + 1);
-    });
-  }, [dbData]);
+    } catch (error) {
+      alert("네트워크오류입니다");
+    }
+  }
+  getData();
 
   //!여기부터 이벤트
   const onChange = (event) => {
@@ -43,17 +54,15 @@ const PostForm = () => {
     event.preventDefault();
     console.log(logData);
     axios.post("http://localhost:4000/gaebalog", logData);
-
     setLogData(initialState);
     alert("작성완료!");
     navigate("/");
   };
 
-  //!여기서부터 리턴
   return (
     <Form onSubmit={onSubmit}>
       <Label>제목</Label>
-      <input
+      <Input
         name="title"
         placeholder="title..."
         value={logData.title}
@@ -62,7 +71,7 @@ const PostForm = () => {
       />
       <Label>닉네임 </Label>
 
-      <input
+      <Input
         name="nickname"
         placeholder="nickname..."
         onChange={onChange}
@@ -78,7 +87,7 @@ const PostForm = () => {
       )}
 
       <Label>본문</Label>
-      <textarea
+      <Text
         name="body"
         placeholder="body..."
         onChange={onChange}
@@ -86,7 +95,7 @@ const PostForm = () => {
         required
       />
       <Label>사진올리기</Label>
-      <input
+      <Input
         name="img"
         value={logData.img}
         type="file"
@@ -102,13 +111,24 @@ export default PostForm;
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  margin: 20px;
+
+  width: 45rem;
+  margin: auto;
 `;
 const Label = styled.label`
   margin-top: 10px;
   margin-bottom: 10px;
+  width: 43rem;
 `;
 const Error = styled.span`
   color: red;
   font-size: small;
+`;
+const Input = styled.input`
+  height: 3em;
+  width: 43rem;
+`;
+const Text = styled.textarea`
+  height: 10rem;
+  width: 43rem;
 `;

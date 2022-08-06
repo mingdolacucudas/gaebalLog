@@ -55,6 +55,27 @@
       "title": "dfd",
       "body": "dfdff",
       "img": "C:\\fakepath\\KakaoTalk_Photo_2022-08-04-11-19-28.png"
+    },
+    {
+      "id": 9,
+      "nickname": "재밋네요",
+      "title": "안녕하세요",
+      "body": "어아러아러ㅏㅓ라",
+      "img": ""
+    }
+  ],
+  "comments": [
+    {
+      "id": 0,
+      "nickname": "ming",
+      "comment": "글을 너 잘쓰시네여",
+      "comment_id": 5
+    },
+    {
+      "id": 1,
+      "nickname": "jin",
+      "comment": "댓글입니다",
+      "comment_id": 2
     }
   ]
 }
