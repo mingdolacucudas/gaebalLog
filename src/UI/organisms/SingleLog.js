@@ -6,9 +6,10 @@ import { useParams } from "react-router-dom";
 
 const SingleLog = () => {
   const param = useParams();
+  console.log("pram의값", param);
+
   const nav = useNavigate();
 
-  console.log("pram의값", param);
   const [log, setLog] = useState(null); //json server의 값을 불러오기 위해 useState선언
 
   // axios를 통해 get요청을 하는 함수를 생성
@@ -29,9 +30,9 @@ const SingleLog = () => {
     nav("/post");
   };
 
-  // 삭제하기 기능 추가
+  // 삭제하기(삭제 후 메인으로 돌아가는 로직을 추가>0806)
   const onDeleteGaebalLog = (logID) => {
-    axios.delete(`http://localhost:3001/gaebalog/${logID}`);
+    axios.delete(`http://localhost:3001/gaebalog/${logID}`).then(nav("/"));
   };
 
   return (
