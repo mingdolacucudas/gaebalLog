@@ -28,6 +28,7 @@ const PostForm = () => {
   //   });
   // }, []);
   //!async버전
+  //!dma..
   async function getData() {
     try {
       const res = await axios.get("http://localhost:3001/gaebalog");
