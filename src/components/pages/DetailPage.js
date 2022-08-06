@@ -33,17 +33,23 @@ const DetailPage = () => {
     <Layout>
       <Header />
       <StArticle>
-        {log?.map((log) => (
-          <div key={log.id}>
-            <h1>{log.title}</h1>
-            <p>
-              {log.id}: {log.nickname}
-            </p>
-            <p>{log.body}</p>
-            <button onClick={() => onEditGaebalLog()}>수정</button>
-            <button onClick={() => onDeleteGaebalLog()}>삭제</button>
-          </div>
-        ))}
+        {log?.map((log) => {
+          if (log.id === parseInt(param.id)) {
+            return (
+              <div key={log.id}>
+                <h1>{log.title}</h1>
+                <p>{log.nickname}</p>
+                <img src={log.img} alt="" />
+                <p>{log.body}</p>
+
+                <button onClick={() => onEditGaebalLog()}>수정</button>
+                <button onClick={() => onDeleteGaebalLog(log.id)}>삭제</button>
+              </div>
+            );
+          } else {
+            return null;
+          }
+        })}
       </StArticle>
       <div>
         이 아래부터 댓글영역임

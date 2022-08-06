@@ -11,17 +11,17 @@ const LogList = () => {
   // const [data, setData] = useState([]);
   // console.log(data);
 
-  async function getData() {
-    try {
-      const res = await axios.get("http://localhost:3001/gaebalog");
-      console.log(res.data);
-      // setDbData(res.data);
-      //setIdNumber(res.data.length + 1);
-    } catch (error) {
-      alert("네트워크오류입니다");
-    }
-  }
-  getData();
+  // async function getData() {
+  //   try {
+  //     const res = await axios.get("http://localhost:3001/gaebalog");
+  //     console.log(res.data);
+  //     // setDbData(res.data);
+  //     //setIdNumber(res.data.length + 1);
+  //   } catch (error) {
+  //     alert("네트워크오류입니다");
+  //   }
+  // }
+  // getData();
 
   // const callGbAxios = () => {
   //   axios({
