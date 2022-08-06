@@ -28,18 +28,19 @@ const PostForm = () => {
   //   });
   // }, []);
   //!async버전
-  //!dma..
   async function getData() {
     try {
       const res = await axios.get("http://localhost:3001/gaebalog");
       setDbData(res.data);
+      console.log(dbData);
       setIdNumber(res.data.length + 1);
     } catch (error) {
       alert("네트워크오류입니다");
     }
   }
-  getData();
-
+  useEffect(() => {
+    getData();
+  }, []);
   //!여기부터 이벤트
   const onChange = (event) => {
     const { name, value } = event.target;
@@ -99,7 +100,7 @@ const PostForm = () => {
       <Input
         name="img"
         value={logData.img}
-        type="file"
+        type="url"
         accept="image/*"
         onChange={onChange}
       />
