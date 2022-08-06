@@ -1,0 +1,39 @@
+{
+  "gaeballog": [
+    {
+      "id": 0,
+      "nickname": "ming",
+      "title": "오늘의 TIL",
+      "body": "진짜진짲닞다아어ㅏㅓ너무 어렵다.",
+      "img": "이미지..."
+    },
+    {
+      "id": 1,
+      "nickname": "ho",
+      "title": "우리팀이 짱이야",
+      "body": "우리는 벌써 다만들었는걸..?",
+      "img": "이미지..."
+    },
+    {
+      "id": 3,
+      "nickname": "jin",
+      "title": "리액트 너무 재밌어!",
+      "body": "짜릿해!!",
+      "img": "이미지..."
+    },
+    {
+      "id": 4,
+      "nickname": "하이루",
+      "title": "제목",
+      "body": "잘들어갈까요>?",
+      "img": "C:\\fakepath\\KakaoTalk_Photo_2022-08-04-10-49-11.png"
+    },
+    {
+      "id": 5,
+      "nickname": "안녕하세요",
+      "title": "오늘 공부뭐하지",
+      "body": "ㅇㅇㄹㅇㄹ\nㅇㄹㅇㄹㅇㄹ\nㅇㄹㅇㄹ",
+      "img": "C:\\fakepath\\KakaoTalk_Photo_2022-08-04-10-49-36.png"
+    }
+  ]
+}
