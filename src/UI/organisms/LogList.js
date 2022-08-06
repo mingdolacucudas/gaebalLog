@@ -1,54 +1,72 @@
 import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
-// import { useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const LogList = () => {
   const navi = useNavigate();
-  const [data, useData] = useState([
-    {
-      id: 0,
-      nickname: "ming",
-      title: "오늘의 TIL",
-      body: "진짜진짲닞다아어ㅏㅓ너무 어렵다.",
-      img: "이미지...",
-    },
-    {
-      id: 1,
-      nickname: "ho",
-      title: "우리팀이 짱이야",
-      body: "우리는 벌써 다만들었는걸..?",
-      img: "이미지...",
-    },
-    {
-      id: 3,
-      nickname: "jin",
-      title: "리액트 너무 재밌어!",
-      body: "짜릿해!!",
-      img: "이미지...",
-    },
-    {
-      id: 4,
-      nickname: "하이루",
-      title: "제목",
-      body: "잘들어갈까요>?",
-      img: "C:\\fakepath\\KakaoTalk_Photo_2022-08-04-10-49-11.png",
-    },
-    {
-      id: 5,
-      nickname: "안녕하세요",
-      title: "오늘 공부뭐하지",
-      body: "ㅇㅇㄹㅇㄹ\nㅇㄹㅇㄹㅇㄹ\nㅇㄹㅇㄹ",
-      img: "C:\\fakepath\\KakaoTalk_Photo_2022-08-04-10-49-36.png",
-    },
-  ]);
-  console.log(data);
+  // const [data, setData] = useState([]);
+  // console.log(data);
+
+  async function getData() {
+    try {
+      const res = await axios.get("http://localhost:3001/gaebalog");
+      console.log(res.data);
+      // setDbData(res.data);
+      //setIdNumber(res.data.length + 1);
+    } catch (error) {
+      alert("네트워크오류입니다");
+    }
+  }
+  getData();
+
+  // const callGbAxios = () => {
+  //   axios({
+  //     method: "get",
+  //     url: "http://localhost:3001/gaebalog",
+  //   }).then((response) => {
+  //     setData([...response.data]);
+  //     console.log(response.data);
+  //   });
+  //   console.log(data);
+  //   // axios.get("http://localhost:3003/gaebalog").then((response) => {
+  //   //   console.log(response);
+  //   // });
+
+  //   // axios.post("http://localhost:3003/gaebalog").then((response) => {
+  //   //   console.log(response);
+  //   // });
+  // };
 
   // const callAxios = () => {};
+  let [dbData, setDbData] = useState([]);
 
-  // useEffect(() => {}, []);
+  useEffect(() => {
+    axios.get("http://localhost:3001/gaebalog").then((res) => {
+      setDbData(res.data);
+      console.log(res.data);
+      console.log(dbData);
+    });
+  }, []);
+  console.log(dbData);
+  // useEffect(() => {
+  //   callGbAxios();
+  // }, []);
+
+  // let [swData, setSwData] = useState(false);
+  // console.log(swData);
+  // // 디비데이터가 undefined일때는 스위치는 false 다. 디비데이터가 undefined아닐때는 스위치를 true로 바꿔준다
+  // if (dbData === undefined) {
+  //   setSwData(false);
+  // } else {
+  //   setSwData(true);
+  // }
+  // {
+  //   swData ? "" : "로딩중입니다";
+  // }
 
   return (
     <div>
@@ -62,11 +80,10 @@ const LogList = () => {
         </StRecordBtn>
         <div>
           <div>
-            {data.map((x) => {
+            {dbData.map((x) => {
               return (
                 <StTempBox
                   key={x.id}
-                  data={data}
                   onClick={() => {
                     navi(`/detail/${x.id}`);
                   }}
