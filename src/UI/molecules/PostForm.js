@@ -21,7 +21,7 @@ const PostForm = () => {
   let [idNumber, setIdNumber] = useState(0);
   //!then버전
   //useEffect(() => {
-  //   axios.get("http://localhost:4000/gaebalog").then((res) => {
+  //   axios.get("http://localhost:3001/gaebalog").then((res) => {
   //     setDbData(res.data);
   //     console.log(res.data);
   //     setIdNumber(res.data.length + 1);
@@ -30,7 +30,7 @@ const PostForm = () => {
   //!async버전
   async function getData() {
     try {
-      const res = await axios.get("http://localhost:4000/gaebalog");
+      const res = await axios.get("http://localhost:3001/gaebalog");
       setDbData(res.data);
       setIdNumber(res.data.length + 1);
     } catch (error) {
@@ -53,7 +53,7 @@ const PostForm = () => {
   const onSubmit = (event) => {
     event.preventDefault();
     console.log(logData);
-    axios.post("http://localhost:4000/gaebalog", logData);
+    axios.post("http://localhost:3001/gaebalog", logData);
     setLogData(initialState);
     alert("작성완료!");
     navigate("/");
