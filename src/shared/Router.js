@@ -11,6 +11,7 @@ const Router = () => {
       <Route path="/" element={<HomePage />} />
       <Route path="/post" element={<PostPage />} />
       <Route path="/detail" element={<DetailPage />} />
+      <Route path="/detail/:id" element={<DetailPage />} />
     </Routes>
   );
 };
