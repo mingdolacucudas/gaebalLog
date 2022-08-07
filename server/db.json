@@ -23,51 +23,37 @@
     },
     {
       "id": 4,
-      "nickname": "하이루",
-      "title": "제목",
-      "body": "잘들어갈까요>?",
-      "img": "C:\\fakepath\\KakaoTalk_Photo_2022-08-04-10-49-11.png"
-    },
-    {
-      "id": 5,
-      "nickname": "안녕하세요",
-      "title": "오늘 공부뭐하지",
-      "body": "ㅇㅇㄹㅇㄹ\nㅇㄹㅇㄹㅇㄹ\nㅇㄹㅇㄹ",
-      "img": "C:\\fakepath\\KakaoTalk_Photo_2022-08-04-10-49-36.png"
-    },
-    {
-      "id": 6,
-      "nickname": "방가방가",
-      "title": "칸이비워질까요?",
-      "body": "아마도 잘될거같아요 ",
-      "img": "C:\\fakepath\\KakaoTalk_Photo_2022-08-04-10-49-11.png"
-    },
-    {
-      "id": 7,
-      "nickname": "dd",
-      "title": "dd",
-      "body": "dd",
-      "img": "C:\\fakepath\\KakaoTalk_Photo_2022-08-04-10-49-36.png"
-    },
-    {
-      "id": 8,
-      "nickname": "dfd",
-      "title": "dfd",
-      "body": "dfdff",
-      "img": "C:\\fakepath\\KakaoTalk_Photo_2022-08-04-11-19-28.png"
-    },
-    {
-      "id": 9,
-      "nickname": "재밋네요",
-      "title": "안녕하세요",
-      "body": "어아러아러ㅏㅓ라",
+      "nickname": "과연",
+      "title": "이것은테스트인데",
+      "body": "썽크가 잘돌아갈ㅈ까요>",
       "img": ""
     },
     {
-      "id": 10,
-      "nickname": "dfdf",
-      "title": "dffdfd",
-      "body": "dfdfd",
+      "id": 5,
+      "nickname": "ㅎㄹㅎ",
+      "title": "ㄹㅎㄹㅎ",
+      "body": "ㄹㅎㄹㅎ",
+      "img": ""
+    },
+    {
+      "id": 6,
+      "nickname": "하이염",
+      "title": "ㅇㅇ",
+      "body": "ㅇㄹㅇㄹㄹㅇㄹ",
+      "img": ""
+    },
+    {
+      "id": 7,
+      "nickname": "fgfg",
+      "title": "ㄱㅅㄹㅎ",
+      "body": "ㅇㄹㅇㄹ",
+      "img": ""
+    },
+    {
+      "id": 8,
+      "nickname": "안",
+      "title": "ㅇㄹㅇㄹ",
+      "body": "ㅇㄹㅇㄹ",
       "img": ""
     }
   ],
