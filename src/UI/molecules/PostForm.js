@@ -126,7 +126,8 @@ const PostForm = () => {
       </Form>
       <button
         onClick={() => {
-          dispatch(deletePost(4));
+          let postId = 6;
+          dispatch(deletePost(postId));
         }}
       >
         삭제버튼
