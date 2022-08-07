@@ -4,7 +4,12 @@ import { PostSuccessBtn } from "../atoms/PostSuccessBtn";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchPosts, addPost } from "../../redux/modules/post";
+import {
+  fetchPosts,
+  addPost,
+  deletePost,
+  updatePost,
+} from "../../redux/modules/post";
 
 const PostForm = () => {
   const initialState = {
@@ -119,6 +124,21 @@ const PostForm = () => {
         />
         <PostSuccessBtn />
       </Form>
+      <button
+        onClick={() => {
+          dispatch(deletePost(4));
+        }}
+      >
+        삭제버튼
+      </button>
+      <button
+        onClick={() => {
+          let postId = 4;
+          dispatch(updatePost({ postId, logData }));
+        }}
+      >
+        수정버튼
+      </button>
     </>
   );
 };
