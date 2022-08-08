@@ -8,7 +8,7 @@ const initialState = {
 };
 //!generate pending, fulfilled , rejected action types
 //! asyncthunk has two parameters . action type, callback function
-const fetchPosts = createAsyncThunk("post/fetchPosts", async (thunkApi) => {
+const fetchPosts = createAsyncThunk("post/fetchPost", async (thunkApi) => {
   const res = await fetch("http://localhost:3001/gaebalog").then((data) =>
     data.json()
   );
@@ -16,13 +16,13 @@ const fetchPosts = createAsyncThunk("post/fetchPosts", async (thunkApi) => {
   return res;
 });
 
-export const addPost = createAsyncThunk("post/addPosts", async (logData) => {
+export const addPost = createAsyncThunk("post/addPost", async (logData) => {
   const response = await axios.post("http://localhost:3001/gaebalog", logData);
   return response.data;
 });
 
 export const deletePost = createAsyncThunk(
-  "post/deletePosts",
+  "delete/deletePost",
   async (postId) => {
     const response = await axios.delete(
       `http://localhost:3001/gaebalog/${postId}`
@@ -32,7 +32,7 @@ export const deletePost = createAsyncThunk(
 );
 
 export const updatePost = createAsyncThunk(
-  "post/updatePosts",
+  "put/updatePost",
   async ({ logData, postId }) => {
     const response = await axios.put(
       `http://localhost:3001/gaebalog/${postId}`,

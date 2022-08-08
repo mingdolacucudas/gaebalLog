@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { PostSuccessBtn } from "../atoms/PostSuccessBtn";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -27,34 +26,12 @@ const PostForm = () => {
   });
   //console.log(count)
   //!여기까지 테스트
-
   const [logData, setLogData] = useState(initialState);
   let navigate = useNavigate();
   const REGNICKNAME = /^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,16}$/;
   const [toggle, setToggle] = useState(false);
-  let [dbData, setDbData] = useState();
-  let [idNumber, setIdNumber] = useState(0);
-  //!then버전
-  //useEffect(() => {
-  //   axios.get("http://localhost:3001/gaebalog").then((res) => {
-  //     setDbData(res.data);
-  //     console.log(res.data);
-  //    setIdNumber(res.data[dbData.length-1].id+1);
-  //   });
-  // }, []);
-  //!async버전
-  // async function getData() {
-  //   try {
-  //     const res = await axios.get("http://localhost:3001/gaebalog");
-  //     setDbData(res.data);
-  //     console.log(dbData);
-  //     setIdNumber(res.data[length-1].id+1);
-  //   } catch (error) {
-  //     alert("네트워크오류입니다");
-  //   }
-  // }
+
   useEffect(() => {
-    //getData();
     dispatch(fetchPosts());
   }, []);
   //!여기부터 이벤트
@@ -71,11 +48,8 @@ const PostForm = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log(logData);
-    //axios.post("http://localhost:3001/gaebalog", logData);
     dispatch(addPost(logData));
     setLogData(initialState);
-    console.log(count);
     alert("작성완료!");
     navigate("/");
   };

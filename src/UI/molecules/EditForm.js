@@ -2,19 +2,25 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { StBtn } from "../atoms/StBtn";
+import { useSelector, useDispatch } from "react-redux";
+import { updatePost } from "../../redux/modules/post";
 
 function EditForm({ logInfo, setModal }) {
   console.log("logInfo라는 props가 잘 들어오는 지 확인", logInfo);
   console.log("setModal어떻게들어오는지 보자", setModal);
   const [editLog, setEditLog] = useState(logInfo); //state에 logInfo(부모로부터 받은 porops)
   console.log("editLog도 찍어보겠습니다", editLog);
-  const onEditComplete = (logID, editLog) => {
-    axios.patch(`http://localhost:3001/gaebalog/${logID}`, editLog);
-  };
+  const dispatch = useDispatch();
 
   return (
     <StModal>
-      <Form onSubmit={() => onEditComplete(logInfo.id, editLog)}>
+      <Form
+        onSubmit={() => {
+          let postId = logInfo.id;
+          let logData = editLog;
+          dispatch(updatePost({ postId, logData }));
+        }}
+      >
         <Label>제목</Label>
         <Input
           name="title"

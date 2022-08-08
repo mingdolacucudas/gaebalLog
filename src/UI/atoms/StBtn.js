@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const StBtn = styled.button`
+  margin-top: 20px;
   width: 5rem;
   height: 30px;
   border-radius: 7px;
