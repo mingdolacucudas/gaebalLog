@@ -1,5 +1,5 @@
 import styled from "styled-components";
-export const PostSuccessBtn = () => <Btn>작성완료!! </Btn>;
+export const PostSuccessBtn = () => <Btn></Btn>;
 
 const Btn = styled.button`
   width: 5rem;
