@@ -1,0 +1,74 @@
+{
+  "gaebalog": [
+    {
+      "id": 7,
+      "nickname": "fgfg",
+      "title": "ㄱㅅㄹㅎ",
+      "body": "ㅇㄹㅇㄹ",
+      "img": ""
+    },
+    {
+      "id": 8,
+      "nickname": "안",
+      "title": "ㅇㄹㅇㄹ",
+      "body": "ㅇㄹㅇㄹ",
+      "img": ""
+    },
+    {
+      "id": 9,
+      "nickname": "앙",
+      "title": "자꾸삭제해서 하나만듦",
+      "body": "음... 엔터치는거 어케하죠..?",
+      "img": ""
+    },
+    {
+      "id": 10,
+      "nickname": "하이",
+      "title": "ㅇㅇㄹㄹ",
+      "body": "ㅇㄹㅇㄹ",
+      "img": "https://teamsparta.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F388b8aaa-1f41-4bdc-b251-7ee0e1d19ec3%2FUntitled.png?table=block&id=8f6ac830-64e9-49f1-b7bc-562300b8c6c2&spaceId=83c75a39-3aba-4ba4-a792-7aefe4b07895&width=1590&userId=&cache=v2"
+    },
+    {
+      "id": 11,
+      "nickname": "이게뭘까",
+      "title": "ㄹㅎㄹㅎ",
+      "body": "ㅇㄹㅇㄹㅇㄹ",
+      "img": "https://teamsparta.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F388b8aaa-1f41-4bdc-b251-7ee0e1d19ec3%2FUntitled.png?table=block&id=8f6ac830-64e9-49f1-b7bc-562300b8c6c2&spaceId=83c75a39-3aba-4ba4-a792-7aefe4b07895&width=1590&userId=&cache=v2"
+    },
+    {
+      "id": 12,
+      "nickname": "ff",
+      "title": "ffgf",
+      "body": "ffffff",
+      "img": "https://teamsparta.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F388b8aaa-1f41-4bdc-b251-7ee0e1d19ec3%2FUntitled.png?table=block&id=8f6ac830-64e9-49f1-b7bc-562300b8c6c2&spaceId=83c75a39-3aba-4ba4-a792-7aefe4b07895&width=1590&userId=&cache=v2"
+    },
+    {
+      "id": 13,
+      "nickname": "fgfg",
+      "title": "fgf",
+      "body": "fgfg",
+      "img": ""
+    },
+    {
+      "id": 14,
+      "nickname": "fgf",
+      "title": "fgfg",
+      "body": "fgf",
+      "img": ""
+    }
+  ],
+  "comments": [
+    {
+      "id": 0,
+      "nickname": "ming",
+      "comment": "글을 너 잘쓰시네여",
+      "comment_id": 5
+    },
+    {
+      "id": 1,
+      "nickname": "jin",
+      "comment": "댓글입니다",
+      "comment_id": 2
+    }
+  ]
+}

@@ -12,6 +12,7 @@ import {
 } from "../../redux/modules/post";
 
 const PostForm = () => {
+  let [test, setTest] = useState("값은 어떻게 바꾸는 걸까요");
   const initialState = {
     id: 0,
     nickname: "",
@@ -38,7 +39,7 @@ const PostForm = () => {
   //   axios.get("http://localhost:3001/gaebalog").then((res) => {
   //     setDbData(res.data);
   //     console.log(res.data);
-  //     setIdNumber(res.data.length + 1);
+  //    setIdNumber(res.data[dbData.length-1].id+1);
   //   });
   // }, []);
   //!async버전
@@ -47,7 +48,7 @@ const PostForm = () => {
   //     const res = await axios.get("http://localhost:3001/gaebalog");
   //     setDbData(res.data);
   //     console.log(dbData);
-  //     setIdNumber(res.data.length + 1);
+  //     setIdNumber(res.data[length-1].id+1);
   //   } catch (error) {
   //     alert("네트워크오류입니다");
   //   }
@@ -64,6 +65,9 @@ const PostForm = () => {
       setToggle(true);
     } else {
       setToggle(false);
+    }
+    if (name === "body") {
+      console.log(event.target.value);
     }
   };
 
@@ -140,6 +144,13 @@ const PostForm = () => {
       >
         수정버튼
       </button>
+      <input
+        value={test}
+        onChange={(e) => {
+          setTest(e.target.value);
+          console.log();
+        }}
+      ></input>
     </>
   );
 };
