@@ -47,11 +47,11 @@ const LogList = () => {
   useEffect(() => {
     axios.get("http://localhost:3001/gaebalog").then((res) => {
       setDbData(res.data);
-      console.log(res.data);
-      console.log(dbData);
+      // console.log(res.data);
+      // console.log(dbData);
     });
   }, []);
-  console.log(dbData);
+  // console.log(dbData);
   // useEffect(() => {
   //   callGbAxios();
   // }, []);
