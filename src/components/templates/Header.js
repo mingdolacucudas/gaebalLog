@@ -1,18 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { StBtn } from "../../UI/atoms/StBtn";
 
 const Header = () => {
   const navi = useNavigate();
   return (
     <Headerbox>
-      <div>
-        <button onClick={() => navi(-1)}>뒤로가기</button>
-
-        <button onClick={() => navi("/")}> 홈으로</button>
-      </div>
-
+      <StBtn onClick={() => navi(-1)}>뒤로가기</StBtn>
       <Logo src="/gaelogLogo.png" onClick={() => navi("/")}></Logo>
-      <button onClick={() => navi("/post")}>작성하기</button>
+      <StBtn onClick={() => navi("/post")}>글작성하기</StBtn>
     </Headerbox>
   );
 };
