@@ -31,8 +31,10 @@ const SingleLog = () => {
   const onDeleteGaebalLog = (logID) => {
     axios.delete(`http://localhost:3001/gaebalog/${logID}`).then(nav("/"));
   };
-
-  const onEditGaebalLog = () => {};
+  const [modal, setModal] = useState(false);
+  const onShowEditForm = () => {
+    setModal(!modal);
+  };
 
   return (
     <StArticle>
@@ -46,7 +48,7 @@ const SingleLog = () => {
                   {log.nickname}, id체크: {log.id}
                 </p>
                 <StBtnContainer>
-                  <button onClick={() => onEditGaebalLog()}>수정</button>
+                  <button onClick={() => onShowEditForm()}>수정</button>
                   <button onClick={() => onDeleteGaebalLog(log.id)}>
                     삭제
                   </button>
@@ -54,7 +56,9 @@ const SingleLog = () => {
               </StInformation>
               <img src={log.img} alt="" />
               <p>{log.body}</p>
-              <EditForm logID={log.id} />
+              {modal === true ? (
+                <EditForm logInfo={log} setModal={setModal} />
+              ) : null}
             </div>
           );
         } else {
