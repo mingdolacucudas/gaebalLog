@@ -9,8 +9,8 @@ const initialState = {
 //!generate pending, fulfilled , rejected action types
 //! asyncthunk has two parameters . action type, callback function
 const fetchPosts = createAsyncThunk("post/fetchPosts", async (thunkApi) => {
-  const res = await fetch("https://git.heroku.com/gaebalgaebal.git").then(
-    (data) => data.json()
+  const res = await fetch("http://localhost:3001/gaebalog").then((data) =>
+    data.json()
   );
   console.log(res);
   return res;

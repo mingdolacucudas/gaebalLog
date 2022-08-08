@@ -14,7 +14,6 @@ import {
 const PostForm = () => {
   let [test, setTest] = useState("값은 어떻게 바꾸는 걸까요");
   const initialState = {
-    id: 0,
     nickname: "",
     title: "",
     body: "",
@@ -58,16 +57,14 @@ const PostForm = () => {
     dispatch(fetchPosts());
   }, []);
   //!여기부터 이벤트
+  //!이부분을 커스텀 훅으로 만들기
   const onChange = (event) => {
     const { name, value } = event.target;
-    setLogData({ ...logData, [name]: value, id: idNumber });
+    setLogData({ ...logData, [name]: value });
     if (name === "nickname" && !REGNICKNAME.test(value)) {
       setToggle(true);
     } else {
       setToggle(false);
-    }
-    if (name === "body") {
-      console.log(event.target.value);
     }
   };
 
