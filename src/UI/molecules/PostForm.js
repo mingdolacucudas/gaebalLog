@@ -4,6 +4,7 @@ import { PostSuccessBtn } from "../atoms/PostSuccessBtn";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { StBtn } from "../atoms/StBtn";
 import {
   fetchPosts,
   addPost,
@@ -123,7 +124,7 @@ const PostForm = () => {
           accept="image/*"
           onChange={onChange}
         />
-        <PostSuccessBtn />
+        <StBtn>작성완료</StBtn>
       </Form>
       <button
         onClick={() => {

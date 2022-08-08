@@ -5,20 +5,9 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchPosts } from "../../redux/modules/post";
 
 const LogList = () => {
-  const dispatch = useDispatch();
-  const data = useSelector((state) => {
-    return state.postSlice.posts;
-  });
-
   const navi = useNavigate();
-  useEffect(() => {
-    //getData();
-    dispatch(fetchPosts());
-  }, []);
   // const [data, setData] = useState([]);
   // console.log(data);
 
@@ -56,12 +45,13 @@ const LogList = () => {
   let [dbData, setDbData] = useState([]);
 
   useEffect(() => {
-    dispatch(fetchPosts());
-    // axios.get("http://localhost:3001/gaebalog").then((res) => {
-    //   setDbData(res.data);
-    // });
+    axios.get("http://localhost:3001/gaebalog").then((res) => {
+      setDbData(res.data);
+      // console.log(res.data);
+      // console.log(dbData);
+    });
   }, []);
-
+  // console.log(dbData);
   // useEffect(() => {
   //   callGbAxios();
   // }, []);
@@ -90,7 +80,7 @@ const LogList = () => {
         </StRecordBtn>
         <div>
           <div>
-            {data.map((x) => {
+            {dbData.map((x) => {
               return (
                 <StTempBox
                   key={x.id}

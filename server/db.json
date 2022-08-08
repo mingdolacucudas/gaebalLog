@@ -1,13 +1,6 @@
 {
   "gaebalog": [
     {
-      "id": 7,
-      "nickname": "fgfg",
-      "title": "ㄱㅅㄹㅎ",
-      "body": "ㅇㄹㅇㄹ",
-      "img": ""
-    },
-    {
       "id": 8,
       "nickname": "안",
       "title": "ㅇㄹㅇㄹ",
@@ -69,20 +62,28 @@
       "body": "fffffffffff\nffffff\\\nfffff",
       "img": "",
       "id": 16
-    }
-  ],
-  "comments": [
-    {
-      "id": 0,
-      "nickname": "ming",
-      "comment": "글을 너 잘쓰시네여",
-      "comment_id": 5
     },
     {
-      "id": 1,
-      "nickname": "jin",
-      "comment": "댓글입니다",
-      "comment_id": 2
+      "id": 17,
+      "nickname": "ghgh",
+      "title": "gghghgh",
+      "body": "ghgh",
+      "img": ""
+    },
+    {
+      "id": 18,
+      "nickname": "dfdf",
+      "title": "frdf",
+      "body": "dfdf",
+      "img": ""
+    },
+    {
+      "nickname": "ggggg",
+      "title": "gggg",
+      "body": "ff\nfgfg\nfgfg\nfgf\n\nfgfg\nfgf",
+      "img": "",
+      "id": 19
     }
-  ]
+  ],
+  "comments": []
 }
