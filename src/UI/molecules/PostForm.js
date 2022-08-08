@@ -51,7 +51,8 @@ const PostForm = () => {
     //getData();
     dispatch(fetchPosts());
   }, []);
-  //!여기부터 이벤트
+
+  // !여기부터 이벤트
   const onChange = (event) => {
     const { name, value } = event.target;
     setLogData({ ...logData, [name]: value });

@@ -26,7 +26,7 @@ const SingleLog = () => {
     fetchGaebalLogs();
   }, []);
 
-  console.log(log); //data fetching이 잘 되었는지 콘솔을 통해서 확인한다
+  // console.log(log); //data fetching이 잘 되었는지 콘솔을 통해서 확인한다
 
   // 삭제하기(삭제 후 메인으로 돌아가는 로직을 추가>0806)
   const onDeleteGaebalLog = (logID) => {

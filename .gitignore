@@ -22,6 +22,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+<<<<<<< HEAD
+=======
 # db
+>>>>>>> fbaec3d54271bcff032a284147755fd88e378dc3
 db.json
 

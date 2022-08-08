@@ -1,6 +1,41 @@
 {
   "gaebalog": [
     {
+      "id": 1,
+      "nickname": "ho",
+      "title": "우리팀이 짱이야",
+      "body": "우리는 벌써 다만들었는걸..?",
+      "img": "이미지..."
+    },
+    {
+      "id": 3,
+      "nickname": "jin",
+      "title": "리액트 너무 재밌어!",
+      "body": "짜릿해!!",
+      "img": "이미지..."
+    },
+    {
+      "id": 4,
+      "nickname": "하이루",
+      "title": "제목",
+      "body": "잘들어갈까요>?",
+      "img": "C:\\fakepath\\KakaoTalk_Photo_2022-08-04-10-49-11.png"
+    },
+    {
+      "id": 5,
+      "nickname": "안녕하세요",
+      "title": "오늘 공부뭐하지",
+      "body": "ㅇㅇㄹㅇㄹ\nㅇㄹㅇㄹㅇㄹ\nㅇㄹㅇㄹ",
+      "img": "C:\\fakepath\\KakaoTalk_Photo_2022-08-04-10-49-36.png"
+    },
+    {
+      "id": 6,
+      "nickname": "방가방가",
+      "title": "칸이비워질까요?",
+      "body": "아마도 잘될거같아요 ",
+      "img": "C:\\fakepath\\KakaoTalk_Photo_2022-08-04-10-49-11.png"
+    },
+    {
       "id": 7,
       "nickname": "fgfg",
       "title": "ㄱㅅㄹㅎ",
@@ -23,74 +58,23 @@
     },
     {
       "id": 10,
-      "nickname": "하이",
-      "title": "ㅇㅇㄹㄹ",
-      "body": "ㅇㄹㅇㄹ",
-      "img": "https://teamsparta.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F388b8aaa-1f41-4bdc-b251-7ee0e1d19ec3%2FUntitled.png?table=block&id=8f6ac830-64e9-49f1-b7bc-562300b8c6c2&spaceId=83c75a39-3aba-4ba4-a792-7aefe4b07895&width=1590&userId=&cache=v2"
-    },
-    {
-      "id": 11,
-      "nickname": "이게뭘까",
-      "title": "ㄹㅎㄹㅎ",
-      "body": "ㅇㄹㅇㄹㅇㄹ",
-      "img": "https://teamsparta.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F388b8aaa-1f41-4bdc-b251-7ee0e1d19ec3%2FUntitled.png?table=block&id=8f6ac830-64e9-49f1-b7bc-562300b8c6c2&spaceId=83c75a39-3aba-4ba4-a792-7aefe4b07895&width=1590&userId=&cache=v2"
-
-    },
-    {
-      "id": 12,
-      "nickname": "ff",
-      "title": "ffgf",
-      "body": "ffffff",
-      "img": "https://teamsparta.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F388b8aaa-1f41-4bdc-b251-7ee0e1d19ec3%2FUntitled.png?table=block&id=8f6ac830-64e9-49f1-b7bc-562300b8c6c2&spaceId=83c75a39-3aba-4ba4-a792-7aefe4b07895&width=1590&userId=&cache=v2"
-    },
-    {
-      "id": 13,
-      "nickname": "fgfg",
-      "title": "fgf",
-      "body": "fgfg",
-      "img": ""
-    },
-    {
-      "id": 14,
-      "nickname": "fgf",
-      "title": "fgfg",
-      "body": "fgf",
-      "img": ""
-    },
-    {
-      "id": 15,
-      "nickname": "fgfg",
-      "title": "dffg",
-      "body": "fgfg",
-      "img": ""
-    },
-    {
-      "nickname": "gfg",
-      "title": "fgfg",
-      "body": "fffffffffff\nffffff\\\nfffff",
-      "img": "",
-      "id": 16
-    },
-    {
-      "id": 17,
-      "nickname": "ghgh",
-      "title": "gghghgh",
-      "body": "ghgh",
+      "nickname": "giasdfoisadjfiosadjfoisnfas",
+      "title": "giasdfoisadjfiosadjfoisnfas",
+      "body": "giasdfoisadjfiosadjfoisnfas",
       "img": ""
     }
   ],
   "comments": [
     {
-      "id": 0,
-      "nickname": "ming",
-      "comment": "글을 너 잘쓰시네여",
-      "comment_id": 5
+      "nickname": "123",
+      "comment": "asdf",
+      "id": 1
     },
     {
-      "id": 1,
-      "nickname": "jin",
-      "comment": "댓글입니다",
-      "comment_id": 2
+      "id": 2,
+      "nickname": "gkgkgkgk",
+      "comment": "ghghghgh",
+      "comment_id": ""
     }
   ]
 }
