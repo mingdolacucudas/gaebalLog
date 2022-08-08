@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios"; //axios 임포트(서버의 데이터를 조회할 때 사용)
 import { useParams } from "react-router-dom";
 import EditForm from "../molecules/EditForm";
+import { StBtn } from "../atoms/StBtn";
 
 const SingleLog = () => {
   const param = useParams();
@@ -48,17 +49,17 @@ const SingleLog = () => {
                   {log.nickname}, id체크: {log.id}
                 </p>
                 <StBtnContainer>
-                  <button onClick={() => onShowEditForm()}>수정</button>
-                  <button onClick={() => onDeleteGaebalLog(log.id)}>
-                    삭제
-                  </button>
+                  <StBtn onClick={() => onShowEditForm()}>수정</StBtn>
+                  <StBtn onClick={() => onDeleteGaebalLog(log.id)}>삭제</StBtn>
                 </StBtnContainer>
               </StInformation>
-              <img src={log.img} alt="" />
-              <p>{log.body}</p>
-              {modal === true ? (
-                <EditForm logInfo={log} setModal={setModal} />
-              ) : null}
+              <StLogBody>
+                <img src={log.img} alt="" />
+                <p>{log.body}</p>
+                {modal === true ? (
+                  <EditForm logInfo={log} setModal={setModal} />
+                ) : null}
+              </StLogBody>
             </div>
           );
         } else {
@@ -73,11 +74,27 @@ export default SingleLog;
 
 const StArticle = styled.div`
   background-color: gainsboro;
+  width: 80%;
+  margin: 1.5rem auto;
+  padding: 1rem;
+
+  & h1 {
+    font-size: 3rem;
+  }
 `;
 
 const StInformation = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  margin-top: 25px;
+  margin-bottom: 25px;
+
+  font-size: 1.25rem;
 `;
 const StBtnContainer = styled.div``;
+const StLogBody = styled.div`
+  text-align: center;
+  line-height: 200%; //행간조절 브라우저 문자 기준크기에 대한 %값
+`;

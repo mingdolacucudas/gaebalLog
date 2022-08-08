@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import { EditSuccessBtn } from "../atoms/EditSuccessBtn";
+import { StBtn } from "../atoms/StBtn";
 
 function EditForm({ logInfo, setModal }) {
   console.log("logInfo라는 props가 잘 들어오는 지 확인", logInfo);
@@ -40,15 +40,15 @@ function EditForm({ logInfo, setModal }) {
           value={editLog.img}
         />
         <BtnContainer>
-          <EditSuccessBtn />
-          <CancelBtn
+          <StBtn>수정완료</StBtn>
+          <StBtn
             type="button"
             onClick={() => {
               setModal(false);
             }}
           >
             취소
-          </CancelBtn>
+          </StBtn>
         </BtnContainer>
       </Form>
     </StModal>
@@ -92,10 +92,4 @@ const BtnContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 10px;
-`;
-const CancelBtn = styled.button`
-  width: 5rem;
-  height: 30px;
-  border-radius: 7px;
-  background-color: white;
 `;
