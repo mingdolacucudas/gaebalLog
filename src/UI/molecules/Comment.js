@@ -24,6 +24,7 @@ const Comment = () => {
     comment_id: param.id,
   });
   const [modal, setModal] = useState(false);
+  const [modalComment, setModalComment] = useState("");
   //!추가하기
   const onSubmitHandler = (e) => {
     e.preventDefault();
@@ -77,9 +78,14 @@ const Comment = () => {
       <div>
         {data.map((c, i) => {
           if (c.comment_id === param.id) {
+            // {
+            //   modal ?  : <div>하세요</div>;
+            // }
             return (
               <div key={c.id}>
-                닉네임:{c.nickname} - 댓글내용:{c.comment}
+                <div>
+                  닉네임:{c.nickname} - 댓글내용:{c.comment}
+                </div>
                 <button
                   type="button"
                   onClick={() => {
@@ -90,74 +96,71 @@ const Comment = () => {
                 </button>
                 <button
                   onClick={() => {
+                    setModalComment(c);
                     setModal(true);
                   }}
                 >
                   수정하기
                 </button>
-                {modal ? (
-                  <Modal
-                    c={c}
-                    setComment={setComment}
-                    comment={comment}
-                    setModal={setModal}
-                  />
-                ) : null}
               </div>
             );
           }
         })}
       </div>
       //!여기부터 수정화면
+      {modal ? (
+        <Modal
+          setComment={setComment}
+          comment={comment}
+          setModal={setModal}
+          modalComment={modalComment}
+        />
+      ) : null}
     </div>
   );
 };
 
-const Modal = ({ c, comment, setComment, setModal }) => {
+const Modal = ({ setModal, modalComment }) => {
   const dispatch = useDispatch();
+  useEffect(() => {
+    console.log(modalComment);
+  }, []);
+  const [commentData, setCommentData] = useState(modalComment);
+  const commentId = modalComment.id;
   const updatehandler = (e) => {
     e.preventDefault();
-    dispatch(updateComment(comment));
-    e.target[0].value = "";
-    e.target[1].value = "";
+    dispatch(updateComment({ commentId, commentData }));
+    setModal(false);
   };
   return (
-    <form onSubmit={(e) => updatehandler}>
+    <form onSubmit={(e) => updatehandler(e)}>
       <label>닉네임</label>
       <input
         type="text"
+        value={commentData.nickname}
         placeholder="닉네임"
         name="nickname"
-        value={c.nickname}
-        onChange={(x) => {
-          const { value } = x.target;
-          setComment({
-            ...comment,
-            nickname: value,
+        onChange={(e) => {
+          setCommentData({
+            ...commentData,
+            nickname: e.target.value,
           });
         }}
       />
       <label>댓글입력</label>
       <input
         type="text"
+        value={commentData.comment}
         name="comment"
         placeholder="댓글입력"
-        value={c.comment}
-        onChange={(x) => {
-          const { value } = x.target;
-          setComment({
-            ...comment,
-            comment: value,
+        onChange={(e) => {
+          setCommentData({
+            ...commentData,
+            comment: e.target.value,
           });
         }}
       />
-      <button
-        onClick={() => {
-          setModal(false);
-        }}
-      >
-        수정완료
-      </button>
+      <button>수정완료</button>
       <button
         onClick={() => {
           setModal(false);

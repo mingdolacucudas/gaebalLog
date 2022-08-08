@@ -73,57 +73,61 @@
   ],
   "comments": [
     {
+      "nickname": "ghg",
+      "comment": "ghg",
+      "id": 1
+    },
+    {
       "id": 2,
-      "nickname": "gfdff",
-      "comment": "dfdffdfdfdfdf",
-      "comment_id": "19"
+      "nickname": "ghgghg",
+      "comment": "ghgghgh",
+      "comment_id": ""
     },
     {
-      "id": 3,
-      "nickname": "무야무야",
-      "comment": "dfdffdfdfdfdf",
-      "comment_id": "1"
-    },
-    {
-      "id": 3,
-      "nickname": "모야모야",
-      "comment": "dfdffdfdfdfdf",
-      "comment_id": "12"
-    },
-    {
-      "id": 3,
-      "nickname": "모야모야",
-      "comment": "dfdffdfdfdfdf",
-      "comment_id": "11"
+      "nickname": "ffg",
+      "comment": "g",
+      "id": 3
     },
     {
       "id": 4,
-      "nickname": "이건모야",
-      "comment": "dfdffdfdfdfdf",
-      "comment_id": "8"
+      "comment": "t",
+      "comment_id": "",
+      "nickname": "ffgrtgft"
     },
     {
-      "nickname": "vfv",
-      "comment": "cvcvcv",
-      "id": 5
-    },
-    {
-      "id": 6,
-      "nickname": "vfvrtrt",
-      "comment": "cvcvcvrtrt",
+      "id": 5,
+      "comment": "g",
       "comment_id": ""
     },
     {
-      "id": 8,
-      "nickname": "또추가해볼게여",
-      "comment": "또추가해볼게여",
-      "comment_id": ""
+      "nickname": "dfdfd",
+      "comment": "dfdf",
+      "comment_id": "11",
+      "id": 6
     },
     {
-      "nickname": "이건",
-      "comment": "12번",
+      "nickname": "dfdf",
+      "comment": "dfdf",
+      "comment_id": "11",
+      "id": 7
+    },
+    {
+      "nickname": "dfd",
+      "comment": "dfd",
+      "comment_id": "11",
+      "id": 8
+    },
+    {
+      "nickname": "ffg",
+      "comment": "gfg",
       "comment_id": "12",
       "id": 9
+    },
+    {
+      "nickname": "fggㅇㄹㅇㄹdf",
+      "comment": "fgfgㅇㄹㅇㄹㄹdf",
+      "comment_id": "12",
+      "id": 10
     }
   ]
 }
