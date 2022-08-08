@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"; //axios 임포트(서버의 데이터를 조회할 때 사용)
 import { useParams } from "react-router-dom";
+import EditForm from "../molecules/EditForm";
 
 const SingleLog = () => {
   const param = useParams();
@@ -26,14 +27,12 @@ const SingleLog = () => {
 
   console.log(log); //data fetching이 잘 되었는지 콘솔을 통해서 확인한다
 
-  const onEditGaebalLog = () => {
-    nav("/post");
-  };
-
   // 삭제하기(삭제 후 메인으로 돌아가는 로직을 추가>0806)
   const onDeleteGaebalLog = (logID) => {
     axios.delete(`http://localhost:3001/gaebalog/${logID}`).then(nav("/"));
   };
+
+  const onEditGaebalLog = () => {};
 
   return (
     <StArticle>
@@ -42,11 +41,20 @@ const SingleLog = () => {
           return (
             <div key={log.id}>
               <h1>{log.title}</h1>
-              <p>{log.nickname}</p>
+              <StInformation>
+                <p>
+                  {log.nickname}, id체크: {log.id}
+                </p>
+                <StBtnContainer>
+                  <button onClick={() => onEditGaebalLog()}>수정</button>
+                  <button onClick={() => onDeleteGaebalLog(log.id)}>
+                    삭제
+                  </button>
+                </StBtnContainer>
+              </StInformation>
               <img src={log.img} alt="" />
               <p>{log.body}</p>
-              <button onClick={() => onEditGaebalLog()}>수정</button>
-              <button onClick={() => onDeleteGaebalLog(log.id)}>삭제</button>
+              <EditForm logID={log.id} />
             </div>
           );
         } else {
@@ -62,3 +70,10 @@ export default SingleLog;
 const StArticle = styled.div`
   background-color: gainsboro;
 `;
+
+const StInformation = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+const StBtnContainer = styled.div``;

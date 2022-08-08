@@ -9,10 +9,8 @@ const DetailPage = () => {
   return (
     <Layout>
       <Header />
-
       <SingleLog />
       <Comment />
-
     </Layout>
   );
 };
