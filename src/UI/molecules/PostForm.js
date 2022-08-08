@@ -27,7 +27,7 @@ const PostForm = () => {
   const REGNICKNAME = /^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,16}$/;
   const [toggle, setToggle] = useState(false);
   let [dbData, setDbData] = useState();
-  let [idNumber, setIdNumber] = useState(0);
+
   //!then버전
   //useEffect(() => {
   //   axios.get("http://localhost:3001/gaebalog").then((res) => {
@@ -54,7 +54,7 @@ const PostForm = () => {
   //!여기부터 이벤트
   const onChange = (event) => {
     const { name, value } = event.target;
-    setLogData({ ...logData, [name]: value, id: idNumber });
+    setLogData({ ...logData, [name]: value });
     if (name === "nickname" && !REGNICKNAME.test(value)) {
       setToggle(true);
     } else {
@@ -117,7 +117,7 @@ const PostForm = () => {
           accept="image/*"
           onChange={onChange}
         />
-        <PostSuccessBtn />
+        <PostSuccessBtn>작성완료</PostSuccessBtn>
       </Form>
     </>
   );

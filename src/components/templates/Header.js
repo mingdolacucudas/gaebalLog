@@ -12,7 +12,7 @@ const Header = () => {
       </div>
 
       <Logo src="/gaelogLogo.png" onClick={() => navi("/")}></Logo>
-      <button onClick={() => navi("/post")}>글작성하기</button>
+      <button onClick={() => navi("/post")}>작성하기</button>
     </Headerbox>
   );
 };
