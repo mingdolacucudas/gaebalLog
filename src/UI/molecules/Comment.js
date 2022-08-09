@@ -1,23 +1,21 @@
 import React from "react";
 import styled from "styled-components";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import useInputs from "../../hooks/useInput";
 import { useSelector, useDispatch } from "react-redux";
+import useInputs from "../../hooks/useInput";
 import {
   addComment,
   fetchComments,
   deleteComment,
   updateComment,
 } from "../../redux/modules/comment";
+import { StBtn } from "../atoms/StBtn";
 
 const Comment = () => {
   const param = useParams();
   const dispatch = useDispatch();
-  const data = useSelector((state) => {
-    return state.commentSlice.comments;
-  });
+  const data = useSelector((state) => state.commentSlice.comments);
   const [{ nickname, comment }, onChange, reset, toggle] = useInputs({
     nickname: "",
     comment: "",
@@ -27,6 +25,7 @@ const Comment = () => {
   const [modal, setModal] = useState(false);
   const [modalComment, setModalComment] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
+
   const onSubmitHandler = (e) => {
     e.preventDefault();
     dispatch(addComment(commentData));
@@ -38,14 +37,10 @@ const Comment = () => {
   useEffect(() => {
     dispatch(fetchComments());
   }, []);
+
   return (
     <div>
-      <form
-        onSubmit={(e) => {
-          onSubmitHandler(e);
-        }}
-      >
-        <label>닉네임</label>
+      <form onSubmit={onSubmitHandler}>
         <input
           type="text"
           placeholder="닉네임"
@@ -53,42 +48,40 @@ const Comment = () => {
           value={nickname}
           onChange={onChange}
         />
-        <label>댓글입력</label>
         <input
           type="text"
           name="comment"
           value={comment}
-          placeholder="댓글입력"
+          placeholder="댓글을 입력해주세요"
           onChange={onChange}
         />
-        <button>댓글 추가하기</button>
-      </form>{" "}
-      //!여기가 댓글보여주는곳
+        <StBtn>저장</StBtn>
+      </form>
       <div>
         {data.map((c, i) => {
           if (c.comment_id === param.id) {
             return (
-              <div key={c.id}>
-                <div>
-                  닉네임:{c.nickname} - 댓글내용:{c.comment}
-                </div>
-                <button
-                  type="button"
-                  onClick={() => {
-                    dispatch(deleteComment(c.id));
-                  }}
-                >
-                  댓글삭제
-                </button>
-                <button
-                  onClick={() => {
-                    setSelectedIndex(i);
-                    setModal(true);
-                  }}
-                >
-                  수정하기
-                </button>
-
+              <StComntLine key={c.id}>
+                <h3>{c.nickname}</h3>
+                <p>{c.comment}</p>
+                <StBtnContainer>
+                  <StBtn
+                    type="button"
+                    onClick={() => {
+                      dispatch(deleteComment(c.id));
+                    }}
+                  >
+                    삭제
+                  </StBtn>
+                  <StBtn
+                    onClick={() => {
+                      setSelectedIndex(i);
+                      setModal(true);
+                    }}
+                  >
+                    수정
+                  </StBtn>
+                </StBtnContainer>
                 {selectedIndex === i && modal && (
                   <Modal
                     commentId={c.id}
@@ -98,7 +91,7 @@ const Comment = () => {
                     editComment={c}
                   />
                 )}
-              </div>
+              </StComntLine>
             );
           }
         })}
@@ -148,6 +141,15 @@ const Modal = ({ setModal, param, commentId, editComment }) => {
     </form>
   );
 };
+export default Comment;
+const StComntLine = styled.div`
+  & h3,
+  p {
+  }
+`;
+const StBtnContainer = styled.div`
+  display: inline-block;
+`;
 
 const TempCommit = styled.div`
   height: 50px;
@@ -169,4 +171,3 @@ const StTempBox = styled.div`
   flex-wrap: wrap;
   margin-top: 10px;
 `;
-export default Comment;

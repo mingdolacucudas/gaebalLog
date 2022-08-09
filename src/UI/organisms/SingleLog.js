@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-import axios from "axios"; //axios 임포트(서버의 데이터를 조회할 때 사용)
-import { useParams } from "react-router-dom";
+
+import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import EditForm from "../molecules/EditForm";
+
 import { StBtn } from "../atoms/StBtn";
 import { fetchPosts, deletePost } from "../../redux/modules/post";
+
+import EditForm from "../molecules/EditForm";
+import Comment from "../molecules/Comment";
 
 const SingleLog = () => {
   //const [log, setLog] = useState(null); //json server의 값을 불러오기 위해 useState선언
   const param = useParams();
   const dispatch = useDispatch();
-  const log = useSelector((state) => {
-    return state.postSlice.posts;
-  });
+  const nav = useNavigate();
+  const log = useSelector((state) => state.postSlice.posts);
 
   //!겟함수
 
@@ -47,10 +48,12 @@ const SingleLog = () => {
                   By {log.nickname}, id체크:{log.id} -나중에지울거에요
                 </p>
                 <StBtnContainer>
-                  <StBtn onClick={() => onShowEditForm()}>수정</StBtn>
-                  <StBtn onClick={() => dispatch(deletePost(log.id))}>
+                  <StBtnGray onClick={() => onShowEditForm()}>수정</StBtnGray>
+                  <StBtnGray
+                    onClick={() => dispatch(deletePost(log.id)).then(nav("/"))}
+                  >
                     삭제
-                  </StBtn>
+                  </StBtnGray>
                 </StBtnContainer>
               </StInformation>
               <StLogBody>
@@ -66,6 +69,7 @@ const SingleLog = () => {
           return null;
         }
       })}
+      <Comment />
     </StArticle>
   );
 };

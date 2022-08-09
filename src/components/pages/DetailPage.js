@@ -10,7 +10,6 @@ const DetailPage = () => {
     <Layout>
       <Header />
       <SingleLog />
-      <Comment />
     </Layout>
   );
 };
