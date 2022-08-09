@@ -1,75 +1,25 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { PostSuccessBtn } from "../atoms/PostSuccessBtn";
-import axios from "axios";
+import useInputs from "../../hooks/useInput";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchPosts, addPost } from "../../redux/modules/post";
+import { StBtn } from "../atoms/StBtn";
+import { addPost, deletePost, updatePost } from "../../redux/modules/post";
 
 const PostForm = () => {
-  const initialState = {
-    id: 0,
+  const [{ nickname, title, body, img }, onChange, reset, toggle] = useInputs({
     nickname: "",
     title: "",
     body: "",
     img: "",
-  };
-  //!리덕스테스트
-  const dispatch = useDispatch();
-  const count = useSelector((state) => {
-    return state.postSlice.posts;
   });
-  //console.log(count)
-  //!여기까지 테스트
-
-  const [logData, setLogData] = useState(initialState);
+  let logData = { nickname, title, body, img };
+  const dispatch = useDispatch();
   let navigate = useNavigate();
-  const REGNICKNAME = /^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,16}$/;
-  const [toggle, setToggle] = useState(false);
-  let [dbData, setDbData] = useState();
-
-  //!then버전
-  //useEffect(() => {
-  //   axios.get("http://localhost:3001/gaebalog").then((res) => {
-  //     setDbData(res.data);
-  //     console.log(res.data);
-  //     setIdNumber(res.data.length + 1);
-  //   });
-  // }, []);
-  //!async버전
-  // async function getData() {
-  //   try {
-  //     const res = await axios.get("http://localhost:3001/gaebalog");
-  //     setDbData(res.data);
-  //     console.log(dbData);
-  //     setIdNumber(res.data.length + 1);
-  //   } catch (error) {
-  //     alert("네트워크오류입니다");
-  //   }
-  // }
-  useEffect(() => {
-    //getData();
-    dispatch(fetchPosts());
-  }, []);
-
-  // !여기부터 이벤트
-  const onChange = (event) => {
-    const { name, value } = event.target;
-    setLogData({ ...logData, [name]: value });
-    if (name === "nickname" && !REGNICKNAME.test(value)) {
-      setToggle(true);
-    } else {
-      setToggle(false);
-    }
-  };
 
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log(logData);
-    //axios.post("http://localhost:3001/gaebalog", logData);
     dispatch(addPost(logData));
-    setLogData(initialState);
-    console.log(count);
     alert("작성완료!");
     navigate("/");
   };
@@ -81,7 +31,8 @@ const PostForm = () => {
         <Input
           name="title"
           placeholder="title..."
-          value={logData.title}
+          // value={logData.title}
+          value={title}
           onChange={onChange}
           required
         />
@@ -91,7 +42,8 @@ const PostForm = () => {
           name="nickname"
           placeholder="nickname..."
           onChange={onChange}
-          value={logData.nickname}
+          // value={logData.nickname}
+          value={nickname}
           required
         />
         {toggle ? (
@@ -107,19 +59,38 @@ const PostForm = () => {
           name="body"
           placeholder="body..."
           onChange={onChange}
-          value={logData.body}
+          // value={logData.body}
+          value={body}
           required
         />
         <Label>사진올리기</Label>
         <Input
           name="img"
-          value={logData.img}
+          // value={logData.img}
+          value={img}
           type="url"
           accept="image/*"
           onChange={onChange}
         />
-        <PostSuccessBtn>작성완료</PostSuccessBtn>
+        <StBtn>작성완료</StBtn>
       </Form>
+
+      <button
+        onClick={() => {
+          let postId = 6;
+          dispatch(deletePost(postId));
+        }}
+      >
+        삭제버튼
+      </button>
+      <button
+        onClick={() => {
+          let postId = 4;
+          dispatch(updatePost({ postId, logData }));
+        }}
+      >
+        수정버튼
+      </button>
     </>
   );
 };
