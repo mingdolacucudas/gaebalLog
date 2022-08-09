@@ -8,65 +8,14 @@ import axios from "axios";
 
 const LogList = () => {
   const navi = useNavigate();
-  // const [data, setData] = useState([]);
-  // console.log(data);
 
-  // async function getData() {
-  //   try {
-  //     const res = await axios.get("http://localhost:3001/gaebalog");
-  //     console.log(res.data);
-  //     // setDbData(res.data);
-  //     //setIdNumber(res.data.length + 1);
-  //   } catch (error) {
-  //     alert("네트워크오류입니다");
-  //   }
-  // }
-  // getData();
-
-  // const callGbAxios = () => {
-  //   axios({
-  //     method: "get",
-  //     url: "http://localhost:3001/gaebalog",
-  //   }).then((response) => {
-  //     setData([...response.data]);
-  //     console.log(response.data);
-  //   });
-  //   console.log(data);
-  //   // axios.get("http://localhost:3003/gaebalog").then((response) => {
-  //   //   console.log(response);
-  //   // });
-
-  //   // axios.post("http://localhost:3003/gaebalog").then((response) => {
-  //   //   console.log(response);
-  //   // });
-  // };
-
-  // const callAxios = () => {};
   let [dbData, setDbData] = useState([]);
 
   useEffect(() => {
     axios.get("http://localhost:3001/gaebalog").then((res) => {
       setDbData(res.data);
-      // console.log(res.data);
-      // console.log(dbData);
     });
   }, []);
-  // console.log(dbData);
-  // useEffect(() => {
-  //   callGbAxios();
-  // }, []);
-
-  // let [swData, setSwData] = useState(false);
-  // console.log(swData);
-  // // 디비데이터가 undefined일때는 스위치는 false 다. 디비데이터가 undefined아닐때는 스위치를 true로 바꿔준다
-  // if (dbData === undefined) {
-  //   setSwData(false);
-  // } else {
-  //   setSwData(true);
-  // }
-  // {
-  //   swData ? "" : "로딩중입니다";
-  // }
 
   return (
     <div>
