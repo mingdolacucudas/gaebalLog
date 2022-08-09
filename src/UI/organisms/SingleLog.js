@@ -44,7 +44,7 @@ const SingleLog = () => {
               <h1>{log.title}</h1>
               <StInformation>
                 <p>
-                  {log.nickname}, id체크: {log.id}
+                  By {log.nickname}, id체크:{log.id} -나중에지울거에요
                 </p>
                 <StBtnContainer>
                   <StBtn onClick={() => onShowEditForm()}>수정</StBtn>
@@ -73,7 +73,6 @@ const SingleLog = () => {
 export default SingleLog;
 
 const StArticle = styled.div`
-  background-color: gainsboro;
   width: 80%;
   margin: 1.5rem auto;
   padding: 1rem;
@@ -89,9 +88,26 @@ const StInformation = styled.div`
   margin-top: 25px;
   margin-bottom: 25px;
   font-size: 1.25rem;
+  color: #1f1f1f;
 `;
+
 const StBtnContainer = styled.div``;
+
+// 기존의 StBtn 컴포넌트에서 여기 만의 새로운 속성 추가!!
+const StBtnGray = styled(StBtn)`
+  color: gray;
+  &:nth-of-type(1):hover {
+    color: black;
+  }
+  &:nth-of-type(2):hover {
+    color: #aa1408;
+  }
+`;
+
 const StLogBody = styled.div`
-  text-align: center;
-  line-height: 200%; //행간조절 브라우저 문자 기준크기에 대한 %값
+  & p {
+    text-align: center;
+    line-height: 200%; //행간조절 브라우저 문자 기준크기에 대한 %값
+    font-size: 22px;
+  }
 `;
