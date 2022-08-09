@@ -3,39 +3,33 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"; //axios 임포트(서버의 데이터를 조회할 때 사용)
 import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import EditForm from "../molecules/EditForm";
 import { StBtn } from "../atoms/StBtn";
+import { fetchPosts, deletePost } from "../../redux/modules/post";
 
 const SingleLog = () => {
+  //const [log, setLog] = useState(null); //json server의 값을 불러오기 위해 useState선언
   const param = useParams();
-  console.log("pram의값", param);
+  const dispatch = useDispatch();
+  const log = useSelector((state) => {
+    return state.postSlice.posts;
+  });
 
-  const nav = useNavigate();
-
-  const [log, setLog] = useState(null); //json server의 값을 불러오기 위해 useState선언
-
-  // axios를 통해 get요청을 하는 함수를 생성
-  // 비동기 처리를 해야하므로 asynce/await구문을 통해서 처리
-  const fetchGaebalLogs = async () => {
-    const { data } = await axios.get("http://localhost:3001/gaebalog");
-    setLog(data); //서버로부터 fetching한 데이터를 useState의 state로 설정
-  };
+  //!겟함수
 
   // 생성한 함수를 컴포넌트가 mount됐을 때 실행하기 위해 useEffect사용
   useEffect(() => {
-    fetchGaebalLogs();
+    dispatch(fetchPosts());
   }, []);
 
   // console.log(log); //data fetching이 잘 되었는지 콘솔을 통해서 확인한다
-
   // 삭제하기(삭제 후 메인으로 돌아가는 로직을 추가>0806)
-  const onDeleteGaebalLog = (logID) => {
-    if (window.confirm("정말 삭제하시겠습니까?")) {
-      axios.delete(`http://localhost:3001/gaebalog/${logID}`).then(nav("/"));
-    } else {
-      return null;
-    }
-  };
+  //!수정모드
+  //dispatch(updatePost({ postId, logData }))
+  // const onDeleteGaebalLog = (logID) => {
+  //   axios.delete(`http://localhost:3001/gaebalog/${logID}`).then(nav("/"));
+  // };
   const [modal, setModal] = useState(false);
   const onShowEditForm = () => {
     setModal(!modal);
@@ -53,10 +47,10 @@ const SingleLog = () => {
                   By {log.nickname}, id체크:{log.id} -나중에지울거에요
                 </p>
                 <StBtnContainer>
-                  <StBtnGray onClick={() => onShowEditForm()}>수정</StBtnGray>
-                  <StBtnGray onClick={() => onDeleteGaebalLog(log.id)}>
+                  <StBtn onClick={() => onShowEditForm()}>수정</StBtn>
+                  <StBtn onClick={() => dispatch(deletePost(log.id))}>
                     삭제
-                  </StBtnGray>
+                  </StBtn>
                 </StBtnContainer>
               </StInformation>
               <StLogBody>
@@ -82,7 +76,6 @@ const StArticle = styled.div`
   width: 80%;
   margin: 1.5rem auto;
   padding: 1rem;
-
   & h1 {
     font-size: 3rem;
   }
@@ -92,11 +85,8 @@ const StInformation = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   margin-top: 25px;
   margin-bottom: 25px;
-
-  padding-left: 1rem;
   font-size: 1.25rem;
   color: #1f1f1f;
 `;

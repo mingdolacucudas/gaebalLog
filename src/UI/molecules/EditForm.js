@@ -2,17 +2,31 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { StBtn } from "../atoms/StBtn";
+import { useSelector, useDispatch } from "react-redux";
+import { updatePost } from "../../redux/modules/post";
+import useInputs from "../../hooks/useInput";
 
 function EditForm({ logInfo, setModal }) {
   const [editLog, setEditLog] = useState(logInfo); //state에 logInfo(부모로부터 받은 porops)
-
-  const onEditComplete = (logID, editLog) => {
-    axios.patch(`http://localhost:3001/gaebalog/${logID}`, editLog);
-  };
-
+  console.log("editLog도 찍어보겠습니다", editLog);
+  const dispatch = useDispatch();
+  const [{ nickname, title, body, img }, onChange, reset, toggle] = useInputs({
+    nickname: logInfo.nickname,
+    title: logInfo.title,
+    body: logInfo.body,
+    img: logInfo.img,
+  });
+  let logData = { nickname, title, body, img };
+  console.log(logData);
   return (
     <StModal>
-      <Form onSubmit={() => onEditComplete(logInfo.id, editLog)}>
+      <Form
+        onSubmit={() => {
+          let postId = logInfo.id;
+          let logData = editLog;
+          dispatch(updatePost({ postId, logData }));
+        }}
+      >
         <Label>제목</Label>
         <Input
           name="title"
@@ -70,13 +84,8 @@ const Form = styled.form`
   justify-content: center;
 
   background-color: white;
-
-  width: 50rem;
-  height: 65vh;
-  margin: 8% auto 0 auto;
-
-  border: none;
-  border-radius: 44px;
+  width: 45rem;
+  margin: 10% auto 0 auto;
 `;
 const Label = styled.label`
   margin-top: 10px;

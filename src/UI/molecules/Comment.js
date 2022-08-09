@@ -2,245 +2,151 @@ import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
 import { useEffect } from "react";
-import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import useInputs from "../../hooks/useInput";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addComment,
+  fetchComments,
+  deleteComment,
+  updateComment,
+} from "../../redux/modules/comment";
 
 const Comment = () => {
   const param = useParams();
-  console.log(param);
-  const navigate = useNavigate();
-
-  const [comments, setComments] = useState(null);
-
-  //get 요청  = 댓글(http://localhost:3001/comments)
-  const fetchComment = async () => {
-    const { data } = await axios.get("http://localhost:3001/comments");
-    setComments(data);
-  };
-
-  //post 요청
-  const [comment, setComment] = useState({
+  const dispatch = useDispatch();
+  const data = useSelector((state) => {
+    return state.commentSlice.comments;
+  });
+  const [{ nickname, comment }, onChange, reset, toggle] = useInputs({
     nickname: "",
     comment: "",
   });
-  const onSubmitHandler = (comment) => {
-    axios.post("http://localhost:3001/comments", comment);
-    navigate(`/detail/${param.id}`);
+  const commentData = { nickname, comment, comment_id: param.id };
+
+  const [modal, setModal] = useState(false);
+  const [modalComment, setModalComment] = useState("");
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    dispatch(addComment(commentData));
+    reset();
   };
-  //delete 요청
-  const onClickDeleteButtonHandler = (deleteComment) => {
-    axios.delete(`http://localhost:3001/comments/${deleteComment}`);
-  };
 
-  // //edit 요청 - 미완성
-  // const [targetId, setTargetId] = useState(null);
-  // const [editComment, setEditComment] = useState({
-  //   id: 0,
-  //   comment: "",
-  // });
-
-  // const onClickEditButtonHandler = (commentId, t) => {
-  //   axios.patch(`http://localhost:3001/comments/${commentId}`, t);
-  // };
-
+  //!get요청
   //useEffect
   useEffect(() => {
-    fetchComment();
-  }, [comment]);
-
+    dispatch(fetchComments());
+  }, []);
   return (
     <div>
       <form
         onSubmit={(e) => {
-          e.preventDefault();
-          onSubmitHandler(comment);
-          setComment({
-            id: 0,
-            nickname: "",
-            comment: "",
-            comment_id: "",
-          });
+          onSubmitHandler(e);
         }}
       >
         <label>닉네임</label>
         <input
           type="text"
           placeholder="닉네임"
-          onChange={(x) => {
-            const { value } = x.target;
-            setComment({
-              ...comment,
-              nickname: value,
-            });
-          }}
+          name="nickname"
+          value={nickname}
+          onChange={onChange}
         />
         <label>댓글입력</label>
         <input
           type="text"
+          name="comment"
+          value={comment}
           placeholder="댓글입력"
-          onChange={(x) => {
-            const { value } = x.target;
-            setComment({
-              ...comment,
-              comment: value,
-            });
-          }}
+          onChange={onChange}
         />
         <button>댓글 추가하기</button>
+      </form>{" "}
+      //!여기가 댓글보여주는곳
+      <div>
+        {data.map((c, i) => {
+          if (c.comment_id === param.id) {
+            return (
+              <div key={c.id}>
+                <div>
+                  닉네임:{c.nickname} - 댓글내용:{c.comment}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    dispatch(deleteComment(c.id));
+                  }}
+                >
+                  댓글삭제
+                </button>
+                <button
+                  onClick={() => {
+                    setSelectedIndex(i);
+                    setModal(true);
+                  }}
+                >
+                  수정하기
+                </button>
 
-        <div>
-          {/* //map 에 물음표(?)는 왜들어가지??????? */}
-          {comments?.map((c) => (
-            <div key={c.id}>
-              닉네임:{c.nickname} - 댓글내용:{c.comment}
-              <button
-                type="button"
-                onClick={() => {
-                  onClickDeleteButtonHandler(c.id);
-                  // navigate("/");
-                }}
-              >
-                댓글삭제
-              </button>
-            </div>
-          ))}
-        </div>
-        {/* <input
-          type="text"
-          placeholder="수정하고싶은 닉네임"
-          onChange={(c) => {
-            setTargetId(c.target.value);
-          }}
-        />
-        <input
-          type="text"
-          placeholder="댓글수정"
-          onChange={(c) => {
-            setEditComment({
-              ...comment,
-              comment: c.target.value,
-            });
-          }}
-        />
-        <button
-          type="button"
-          onClick={() => onClickEditButtonHandler(targetId, editComment)}
-        >
-          댓글수정
-        </button> */}
-      </form>
+                {selectedIndex === i && modal && (
+                  <Modal
+                    commentId={c.id}
+                    setModal={setModal}
+                    modalComment={modalComment}
+                    param={param.id}
+                    editComment={c}
+                  />
+                )}
+              </div>
+            );
+          }
+        })}
+      </div>
     </div>
   );
+};
 
-  // //state 로 댓글 달기 연습하기
-  // const [init, setInit] = useState([
-  //   {
-  //     id: 0,
-  //     nickname: "",
-  //     comment: "",
-  //     comment_id: 0,
-  //     isBye: false,
-  //   },
-  // ]);
-
-  // const refresh = { id: 0, nickname: "", comment: "", comment_id: 0 };
-
-  // const [comm, setComm] = useState(refresh);
-  // const onChangeHandler = (event) => {
-  //   const { name, value } = event.target;
-  //   setComm({ ...comm, [name]: value, id: init.length + 1 });
-  // };
-
-  // const onSubmitHandler = (event) => {
-  //   event.preventDefault();
-  //   setInit([...init, comm]);
-  //   setComm(refresh);
-  //   console.log(init);
-  // };
-
-  // const onDeleteComment = (b) => {
-  //   const dinit = init.filter((comm) => {
-  //     return comm.id !== b;
-  //   });
-  //   setInit(dinit);
-  // };
-
-  //삭제요망
-  // let [dbComment, setDbComment] = useState([]);
-
-  // useEffect(() => {
-  //   axios.get("http://localhost:3001/comments").then((res) => {
-  //     setDbComment(res.data);
-  //     console.log(res.data);
-  //     console.log(dbComment);
-  //   });
-  // }, []);
-
-  // console.log(dbComment);
-
-  // const onChangeHandler = (event) => {
-  //   const { name, value } = event.target;
-  //   setDbComment({ ...dbComment, [name]: value });
-  // };
-
-  // const onSubmitHandler = (event) => {
-  //   event.preventDefault();
-  //   setDbComment({
-  //     id: 0,
-  //     nickname: "",
-  //     comment: "",
-  //     comment_id: "",
-  //   });
-  // };
-  // console.log(dbComment);
-
-  //리턴 연습용
-  // return (
-  //   <form onSubmit={onSubmitHandler}>
-  //     <div>
-  //       <label>닉네임</label>
-  //       <input
-  //         type="text"
-  //         placeholder="닉네임"
-  //         name="nickname"
-  //         value={comm.nickname}
-  //         onChange={onChangeHandler}
-  //       />
-  //       <label>댓글내용</label>
-  //       <input
-  //         type="text"
-  //         placeholder="댓글내용"
-  //         name="comment"
-  //         value={comm.comment}
-  //         onChange={onChangeHandler}
-  //       />
-  //       <button>댓글추가</button>
-  //     </div>
-
-  //     <div>
-  //       <div>
-  //         {init.map((x) => {
-  //           if (!init.isBye) {
-  //             return (
-  //               <StTempBox>
-  //                 <div key={x.id}>
-  //                   <div>id:{x.id}</div>
-  //                   <div>nickname:{x.nickname}</div>
-  //                   <div>comment:{x.comment}</div>
-  //                   <div>comment_id:{param.id}</div>
-  //                 </div>
-  //                 <button>수정</button>
-  //                 <button onClick={() => onDeleteComment(x.id)}>삭제</button>
-  //               </StTempBox>
-  //             );
-  //           } else {
-  //             return null;
-  //           }
-  //         })}
-  //       </div>
-  //     </div>
-  //   </form>
-  // );
+const Modal = ({ setModal, param, commentId, editComment }) => {
+  const dispatch = useDispatch();
+  const [{ nickname, comment }, onChange, reset, toggle] = useInputs({
+    nickname: editComment.nickname,
+    comment: editComment.comment,
+  });
+  const commentData = { nickname, comment, comment_id: param };
+  const updatehandler = (e) => {
+    e.preventDefault();
+    dispatch(updateComment({ commentId, commentData }));
+    setModal(false);
+  };
+  return (
+    <form onSubmit={(e) => updatehandler(e)}>
+      <label>닉네임</label>
+      <input
+        type="text"
+        value={nickname}
+        placeholder="닉네임"
+        name="nickname"
+        onChange={onChange}
+      />
+      <label>댓글입력</label>
+      <input
+        type="text"
+        value={comment}
+        name="comment"
+        placeholder="댓글입력"
+        onChange={onChange}
+      />
+      <button>수정완료</button>
+      <button
+        onClick={() => {
+          setModal(false);
+        }}
+      >
+        취소하기
+      </button>
+    </form>
+  );
 };
 
 const TempCommit = styled.div`
