@@ -25,7 +25,8 @@ const Comment = () => {
   });
   const [modal, setModal] = useState(false);
   const [modalComment, setModalComment] = useState("");
-  //!추가하기
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [isSelected, setIsSelected] = useState(false);
   const onSubmitHandler = (e) => {
     e.preventDefault();
     dispatch(addComment(comment));
@@ -38,9 +39,11 @@ const Comment = () => {
   useEffect(() => {
     dispatch(fetchComments());
   }, []);
+  //!연습
 
   return (
     <div>
+      //!!연습
       <form
         onSubmit={(e) => {
           onSubmitHandler(e);
@@ -96,26 +99,29 @@ const Comment = () => {
                 </button>
                 <button
                   onClick={() => {
-                    setModalComment(c);
+                    setSelectedIndex(i);
                     setModal(true);
                   }}
                 >
                   수정하기
                 </button>
+
+                {selectedIndex === i && modal && (
+                  <Modal
+                    i={i}
+                    setComment={setComment}
+                    comment={comment}
+                    setModal={setModal}
+                    modalComment={modalComment}
+                    isSelected
+                    setSelectedIndex={setSelectedIndex}
+                  />
+                )}
               </div>
             );
           }
         })}
       </div>
-      //!여기부터 수정화면
-      {modal ? (
-        <Modal
-          setComment={setComment}
-          comment={comment}
-          setModal={setModal}
-          modalComment={modalComment}
-        />
-      ) : null}
     </div>
   );
 };

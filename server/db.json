@@ -69,6 +69,23 @@
       "body": "ff\nfgfg\nfgfg\nfgf\n\nfgfg\nfgf",
       "img": "",
       "id": 19
+    },
+    {
+      "id": 20
+    },
+    {
+      "nickname": "너",
+      "title": "야",
+      "body": "진짜짜증나",
+      "img": "",
+      "id": 21
+    },
+    {
+      "nickname": "ㅗㅓㅗ",
+      "title": "ㅗㅓㅗㅓ",
+      "body": "ㅗㅓㅗ",
+      "img": "",
+      "id": 22
     }
   ],
   "comments": [
@@ -118,16 +135,34 @@
       "id": 8
     },
     {
-      "nickname": "ffg",
-      "comment": "gfg",
+      "nickname": "dfdf",
+      "comment": "dfdf",
       "comment_id": "12",
       "id": 9
     },
     {
-      "nickname": "fggㅇㄹㅇㄹdf",
-      "comment": "fgfgㅇㄹㅇㄹㄹdf",
-      "comment_id": "12",
+      "nickname": "ffg",
+      "comment": "fgfgg",
+      "comment_id": "8",
       "id": 10
+    },
+    {
+      "nickname": "댓글",
+      "comment": "ㄷ안녕",
+      "comment_id": "8",
+      "id": 11
+    },
+    {
+      "nickname": "fgfffgfg",
+      "comment": "fgfg",
+      "comment_id": "17",
+      "id": 12
+    },
+    {
+      "nickname": "fgfgf",
+      "comment": "fgfg",
+      "comment_id": "17",
+      "id": 13
     }
   ]
 }

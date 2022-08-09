@@ -1,55 +1,37 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import axios from "axios";
+import useInputs from "../../hooks/useInput";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { StBtn } from "../atoms/StBtn";
-import {
-  fetchPosts,
-  addPost,
-  deletePost,
-  updatePost,
-} from "../../redux/modules/post";
+import { addPost, deletePost, updatePost } from "../../redux/modules/post";
 
 const PostForm = () => {
-  let [test, setTest] = useState("값은 어떻게 바꾸는 걸까요");
-  const initialState = {
+  const [{ nickname, title, body, img }, onChange, reset] = useInputs({
     nickname: "",
     title: "",
     body: "",
     img: "",
-  };
-  //!리덕스테스트
-  const dispatch = useDispatch();
-  const count = useSelector((state) => {
-    return state.postSlice.posts;
   });
-  //console.log(count)
-  //!여기까지 테스트
-  const [logData, setLogData] = useState(initialState);
+  let logData = { nickname, title, body, img };
+  const dispatch = useDispatch();
   let navigate = useNavigate();
   const REGNICKNAME = /^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,16}$/;
   const [toggle, setToggle] = useState(false);
 
-  useEffect(() => {
-    dispatch(fetchPosts());
-  }, []);
-  //!여기부터 이벤트
-  //!이부분을 커스텀 훅으로 만들기
-  const onChange = (event) => {
-    const { name, value } = event.target;
-    setLogData({ ...logData, [name]: value });
-    if (name === "nickname" && !REGNICKNAME.test(value)) {
-      setToggle(true);
-    } else {
-      setToggle(false);
-    }
-  };
+  // const onChange = (event) => {
+  //   const { name, value } = event.target;
+  //   setLogData({ ...logData, [name]: value });
+  //   if (name === "nickname" && !REGNICKNAME.test(value)) {
+  //     setToggle(true);
+  //   } else {
+  //     setToggle(false);
+  //   }
+  // };
 
   const onSubmit = (event) => {
     event.preventDefault();
     dispatch(addPost(logData));
-    setLogData(initialState);
     alert("작성완료!");
     navigate("/");
   };
@@ -61,7 +43,8 @@ const PostForm = () => {
         <Input
           name="title"
           placeholder="title..."
-          value={logData.title}
+          // value={logData.title}
+          value={title}
           onChange={onChange}
           required
         />
@@ -71,7 +54,8 @@ const PostForm = () => {
           name="nickname"
           placeholder="nickname..."
           onChange={onChange}
-          value={logData.nickname}
+          // value={logData.nickname}
+          value={nickname}
           required
         />
         {toggle ? (
@@ -87,19 +71,22 @@ const PostForm = () => {
           name="body"
           placeholder="body..."
           onChange={onChange}
-          value={logData.body}
+          // value={logData.body}
+          value={body}
           required
         />
         <Label>사진올리기</Label>
         <Input
           name="img"
-          value={logData.img}
+          // value={logData.img}
+          value={img}
           type="url"
           accept="image/*"
           onChange={onChange}
         />
         <StBtn>작성완료</StBtn>
       </Form>
+
       <button
         onClick={() => {
           let postId = 6;
@@ -116,13 +103,6 @@ const PostForm = () => {
       >
         수정버튼
       </button>
-      <input
-        value={test}
-        onChange={(e) => {
-          setTest(e.target.value);
-          console.log();
-        }}
-      ></input>
     </>
   );
 };
