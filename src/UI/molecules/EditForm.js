@@ -84,8 +84,11 @@ const Form = styled.form`
   justify-content: center;
 
   background-color: white;
-  width: 45rem;
-  margin: 10% auto 0 auto;
+  width: 50rem;
+  height: 65vh;
+  margin: 8% auto 0 auto;
+  border: none;
+  border-radius: 44px;
 `;
 const Label = styled.label`
   margin-top: 10px;
