@@ -4,6 +4,7 @@ import axios from "axios";
 import { StBtn } from "../atoms/StBtn";
 import { useSelector, useDispatch } from "react-redux";
 import { updatePost } from "../../redux/modules/post";
+import useInputs from "../../hooks/useInput";
 
 function EditForm({ logInfo, setModal }) {
   console.log("logInfo라는 props가 잘 들어오는 지 확인", logInfo);
@@ -11,7 +12,14 @@ function EditForm({ logInfo, setModal }) {
   const [editLog, setEditLog] = useState(logInfo); //state에 logInfo(부모로부터 받은 porops)
   console.log("editLog도 찍어보겠습니다", editLog);
   const dispatch = useDispatch();
-
+  const [{ nickname, title, body, img }, onChange, reset, toggle] = useInputs({
+    nickname: logInfo.nickname,
+    title: logInfo.title,
+    body: logInfo.body,
+    img: logInfo.img,
+  });
+  let logData = { nickname, title, body, img };
+  console.log(logData);
   return (
     <StModal>
       <Form

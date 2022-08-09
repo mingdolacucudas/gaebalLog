@@ -86,83 +86,27 @@
       "body": "ㅗㅓㅗ",
       "img": "",
       "id": 22
+    },
+    {
+      "nickname": "랄랄",
+      "title": "edfdfd",
+      "body": "ㅇㄹㅇㄹㅇㄹㅇㅇㄹㅇㄹㅇㄹ",
+      "img": "",
+      "id": 23
     }
   ],
   "comments": [
     {
-      "nickname": "ghg",
-      "comment": "ghg",
+      "nickname": "fgff",
+      "comment": "fgfg",
+      "comment_id": "8",
       "id": 1
     },
     {
-      "id": 2,
-      "nickname": "ghgghg",
-      "comment": "ghgghgh",
-      "comment_id": ""
-    },
-    {
-      "nickname": "ffg",
-      "comment": "g",
-      "id": 3
-    },
-    {
-      "id": 4,
-      "comment": "t",
-      "comment_id": "",
-      "nickname": "ffgrtgft"
-    },
-    {
-      "id": 5,
-      "comment": "g",
-      "comment_id": ""
-    },
-    {
-      "nickname": "dfdfd",
-      "comment": "dfdf",
-      "comment_id": "11",
-      "id": 6
-    },
-    {
-      "nickname": "dfdf",
-      "comment": "dfdf",
-      "comment_id": "11",
-      "id": 7
-    },
-    {
-      "nickname": "dfd",
-      "comment": "dfd",
-      "comment_id": "11",
-      "id": 8
-    },
-    {
-      "nickname": "dfdf",
-      "comment": "dfdf",
-      "comment_id": "12",
-      "id": 9
-    },
-    {
-      "nickname": "ffg",
-      "comment": "fgfgg",
-      "comment_id": "8",
-      "id": 10
-    },
-    {
-      "nickname": "댓글",
-      "comment": "ㄷ안녕",
-      "comment_id": "8",
-      "id": 11
-    },
-    {
-      "nickname": "fgfffgfg",
+      "nickname": "fgg",
       "comment": "fgfg",
-      "comment_id": "17",
-      "id": 12
-    },
-    {
-      "nickname": "fgfgf",
-      "comment": "fgfg",
-      "comment_id": "17",
-      "id": 13
+      "comment_id": "8",
+      "id": 2
     }
   ]
 }

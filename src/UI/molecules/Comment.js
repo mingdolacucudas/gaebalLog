@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
 import { useEffect } from "react";
-import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import useInputs from "../../hooks/useInput";
 import { useSelector, useDispatch } from "react-redux";
 import {
   addComment,
@@ -18,20 +18,19 @@ const Comment = () => {
   const data = useSelector((state) => {
     return state.commentSlice.comments;
   });
-  const [comment, setComment] = useState({
+  const [{ nickname, comment }, onChange, reset, toggle] = useInputs({
     nickname: "",
     comment: "",
-    comment_id: param.id,
   });
+  const commentData = { nickname, comment, comment_id: param.id };
+
   const [modal, setModal] = useState(false);
   const [modalComment, setModalComment] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [isSelected, setIsSelected] = useState(false);
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    dispatch(addComment(comment));
-    e.target[0].value = "";
-    e.target[1].value = "";
+    dispatch(addComment(commentData));
+    reset();
   };
 
   //!get요청
@@ -39,11 +38,8 @@ const Comment = () => {
   useEffect(() => {
     dispatch(fetchComments());
   }, []);
-  //!연습
-
   return (
     <div>
-      //!!연습
       <form
         onSubmit={(e) => {
           onSubmitHandler(e);
@@ -54,26 +50,16 @@ const Comment = () => {
           type="text"
           placeholder="닉네임"
           name="nickname"
-          onChange={(x) => {
-            const { value } = x.target;
-            setComment({
-              ...comment,
-              nickname: value,
-            });
-          }}
+          value={nickname}
+          onChange={onChange}
         />
         <label>댓글입력</label>
         <input
           type="text"
           name="comment"
+          value={comment}
           placeholder="댓글입력"
-          onChange={(x) => {
-            const { value } = x.target;
-            setComment({
-              ...comment,
-              comment: value,
-            });
-          }}
+          onChange={onChange}
         />
         <button>댓글 추가하기</button>
       </form>{" "}
@@ -81,9 +67,6 @@ const Comment = () => {
       <div>
         {data.map((c, i) => {
           if (c.comment_id === param.id) {
-            // {
-            //   modal ?  : <div>하세요</div>;
-            // }
             return (
               <div key={c.id}>
                 <div>
@@ -108,13 +91,11 @@ const Comment = () => {
 
                 {selectedIndex === i && modal && (
                   <Modal
-                    i={i}
-                    setComment={setComment}
-                    comment={comment}
+                    commentId={c.id}
                     setModal={setModal}
                     modalComment={modalComment}
-                    isSelected
-                    setSelectedIndex={setSelectedIndex}
+                    param={param.id}
+                    editComment={c}
                   />
                 )}
               </div>
@@ -126,13 +107,13 @@ const Comment = () => {
   );
 };
 
-const Modal = ({ setModal, modalComment }) => {
+const Modal = ({ setModal, param, commentId, editComment }) => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    console.log(modalComment);
-  }, []);
-  const [commentData, setCommentData] = useState(modalComment);
-  const commentId = modalComment.id;
+  const [{ nickname, comment }, onChange, reset, toggle] = useInputs({
+    nickname: editComment.nickname,
+    comment: editComment.comment,
+  });
+  const commentData = { nickname, comment, comment_id: param };
   const updatehandler = (e) => {
     e.preventDefault();
     dispatch(updateComment({ commentId, commentData }));
@@ -143,28 +124,18 @@ const Modal = ({ setModal, modalComment }) => {
       <label>닉네임</label>
       <input
         type="text"
-        value={commentData.nickname}
+        value={nickname}
         placeholder="닉네임"
         name="nickname"
-        onChange={(e) => {
-          setCommentData({
-            ...commentData,
-            nickname: e.target.value,
-          });
-        }}
+        onChange={onChange}
       />
       <label>댓글입력</label>
       <input
         type="text"
-        value={commentData.comment}
+        value={comment}
         name="comment"
         placeholder="댓글입력"
-        onChange={(e) => {
-          setCommentData({
-            ...commentData,
-            comment: e.target.value,
-          });
-        }}
+        onChange={onChange}
       />
       <button>수정완료</button>
       <button

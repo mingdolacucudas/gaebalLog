@@ -7,7 +7,7 @@ import { StBtn } from "../atoms/StBtn";
 import { addPost, deletePost, updatePost } from "../../redux/modules/post";
 
 const PostForm = () => {
-  const [{ nickname, title, body, img }, onChange, reset] = useInputs({
+  const [{ nickname, title, body, img }, onChange, reset, toggle] = useInputs({
     nickname: "",
     title: "",
     body: "",
@@ -16,18 +16,6 @@ const PostForm = () => {
   let logData = { nickname, title, body, img };
   const dispatch = useDispatch();
   let navigate = useNavigate();
-  const REGNICKNAME = /^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,16}$/;
-  const [toggle, setToggle] = useState(false);
-
-  // const onChange = (event) => {
-  //   const { name, value } = event.target;
-  //   setLogData({ ...logData, [name]: value });
-  //   if (name === "nickname" && !REGNICKNAME.test(value)) {
-  //     setToggle(true);
-  //   } else {
-  //     setToggle(false);
-  //   }
-  // };
 
   const onSubmit = (event) => {
     event.preventDefault();
