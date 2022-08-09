@@ -8,10 +8,18 @@ const Layout = ({ children }) => {
 export default Layout;
 
 const StLayout = styled.div`
-  max-width: 1200px;
-  min-width: 800px;
-
-  min-height: 100vh;
-
   margin: 0 auto;
+  width: 1200px;
+  /* max-width: 1200px;
+  min-width: 800px;
+  min-height: 100vh; */
+
+  /* background-image: linear-gradient(
+    to bottom,
+    #e1ffed,
+    #defeed,
+    #dafded,
+    #d7fced,
+    #d3fbed
+  ); */
 `;

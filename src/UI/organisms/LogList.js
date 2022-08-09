@@ -1,13 +1,15 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const LogList = () => {
   const navi = useNavigate();
+  const param = useParams();
   // const [data, setData] = useState([]);
   // console.log(data);
 
@@ -76,10 +78,11 @@ const LogList = () => {
             navi("/post");
           }}
         >
-          기록하기
+          <span>기록하기</span>
         </StRecordBtn>
+        <p></p>
         <div>
-          <div>
+          <StList>
             {dbData.map((x) => {
               return (
                 <StTempBox
@@ -93,15 +96,30 @@ const LogList = () => {
                   <div>{x.title}</div>
                   <div>{x.body}</div>
                   <div>{x.image}</div>
+                  <StbtnStyle>See more...</StbtnStyle>
                 </StTempBox>
               );
             })}
-          </div>
+          </StList>
         </div>
       </StFather>
     </div>
   );
 };
+
+const rotationAnimation = keyframes`
+  0% {
+    transform:rotate(0deg);
+    border-radius:0px;
+  }
+  50% {
+    border-radius:100px;
+  }
+  100%{
+    transform:rotate(360deg);
+    border-radius:15px;
+  }
+`;
 
 const StFather = styled.div`
   display: block;
@@ -109,31 +127,101 @@ const StFather = styled.div`
   height: 800px;
   flex-wrap: wrap;
   margin: 20px 0px 10px 30px;
-  background-color: whitesmoke;
+  flex-direction: row;
+  justify-content: row;
+  justify-content: flex-start;
+
+  font-family: "InkLipquid";
 `;
 
 const StRecordBtn = styled.button`
+  display: block;
+  justify-content: row;
+  justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+
   color: black;
-  height: 50px;
-  width: 100%;
-  background-color: bisque;
+  height: 100px;
+  width: 100px;
+  background-color: #439889;
   border: 0;
   border-radius: 15px;
+  margin: 10px;
+  span {
+    font-size: 20px;
+    &:hover {
+      font-size: 48px;
+    }
+    &:active {
+      opacity: 0;
+    }
+  }
   cursor: pointer;
+  animation: ${rotationAnimation} 3s;
+  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(145deg, #439889, #ffffff);
+  box-shadow: 9px 9px 18px #e0e0e0, -9px -9px 18px #ffffff;
 `;
 
-const StTempBox = styled.button`
-  cursor: pointer;
+const StList = styled.div`
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+`;
+
+const StTempBox = styled.div`
+  flex-direction: row;
+  justify-content: row;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 18px;
+  background: linear-gradient(145deg, #c8e6c9, #ffffff);
+  box-shadow: 9px 9px 18px #e0e0e0, -9px -9px 18px #ffffff;
+
   padding: 12px;
-  height: 100px;
+  height: 300px;
   border: 1px solid rgb(221, 221, 221);
   background-color: rgb(255, 255, 255);
   border-radius: 12px;
-  width: 100%;
+  width: 330px;
   margin-bottom: 12px;
-  background-color: thistle;
-  display: flex;
+  background-color: #c8e6c9;
+
   flex-wrap: wrap;
   margin-top: 10px;
+  display: flex;
+
+  div {
+    overflow: hidden;
+    height: 50px;
+  }
 `;
+
+const StbtnStyle = styled.button`
+  color: white;
+  background: teal;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid;
+  border-radius: 0.9rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  background: linear-gradient(145deg, #439889, #ffffff);
+  box-shadow: 9px 9px 18px #e0e0e0, -9px -9px 18px #ffffff;
+  cursor: pointer;
+  animation: ${rotationAnimation} 1s;
+`;
+
+const StMain = styled.div`
+  border-radius: 18px;
+  background: linear-gradient(145deg, #e6e6e6, #ffffff);
+  box-shadow: 9px 9px 18px #e0e0e0, -9px -9px 18px #ffffff;
+  width: 50%;
+  padding: 5px;
+  margin-bottom: 10px;
+`;
+
 export default LogList;

@@ -2,79 +2,68 @@
   "gaebalog": [
     {
       "id": 1,
-      "nickname": "ho",
-      "title": "우리팀이 짱이야",
-      "body": "우리는 벌써 다만들었는걸..?",
-      "img": "이미지..."
+      "nickname": "닉네임",
+      "title": "제목제목제목제목제목제목제목제목제목제목제목제목제목",
+      "body": "본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문",
+      "img": ""
+    },
+    {
+      "id": 2,
+      "nickname": "2222",
+      "title": "22222",
+      "body": "22222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222",
+      "img": ""
     },
     {
       "id": 3,
-      "nickname": "jin",
-      "title": "리액트 너무 재밌어!",
-      "body": "짜릿해!!",
-      "img": "이미지..."
-    },
-    {
-      "id": 4,
-      "nickname": "하이루",
-      "title": "제목",
-      "body": "잘들어갈까요>?",
-      "img": "C:\\fakepath\\KakaoTalk_Photo_2022-08-04-10-49-11.png"
-    },
-    {
-      "id": 5,
-      "nickname": "안녕하세요",
-      "title": "오늘 공부뭐하지",
-      "body": "ㅇㅇㄹㅇㄹ\nㅇㄹㅇㄹㅇㄹ\nㅇㄹㅇㄹ",
-      "img": "C:\\fakepath\\KakaoTalk_Photo_2022-08-04-10-49-36.png"
-    },
-    {
-      "id": 6,
-      "nickname": "방가방가",
-      "title": "칸이비워질까요?",
-      "body": "아마도 잘될거같아요 ",
-      "img": "C:\\fakepath\\KakaoTalk_Photo_2022-08-04-10-49-11.png"
-    },
-    {
-      "id": 7,
-      "nickname": "fgfg",
-      "title": "ㄱㅅㄹㅎ",
-      "body": "ㅇㄹㅇㄹ",
-      "img": ""
-    },
-    {
-      "id": 8,
-      "nickname": "안",
-      "title": "ㅇㄹㅇㄹ",
-      "body": "ㅇㄹㅇㄹ",
-      "img": ""
-    },
-    {
-      "id": 9,
-      "nickname": "앙",
-      "title": "자꾸삭제해서 하나만듦",
-      "body": "음... 엔터치는거 어케하죠..?",
-      "img": ""
-    },
-    {
-      "id": 10,
-      "nickname": "giasdfoisadjfiosadjfoisnfas",
-      "title": "giasdfoisadjfiosadjfoisnfas",
-      "body": "giasdfoisadjfiosadjfoisnfas",
+      "nickname": "12312312321",
+      "title": "123213",
+      "body": "ㄴㅇㄹㅁㄴㅇㄹㅇㄴㅁㄹㄴㅁㅇㄹㅁㄴㅇㄹㅇㄴㅁㄹㅁㅇㄴㄹㅇㄴㅁ",
       "img": ""
     }
   ],
   "comments": [
     {
-      "nickname": "123",
-      "comment": "asdf",
-      "id": 1
+      "nickname": "11",
+      "comment": "ㄴㄴㅁㄹ",
+      "comment_id": "3",
+      "id": 3
     },
     {
-      "id": 2,
-      "nickname": "gkgkgkgk",
-      "comment": "ghghghgh",
-      "comment_id": ""
+      "nickname": "444",
+      "comment": "141424",
+      "comment_id": "4",
+      "id": 4
+    },
+    {
+      "nickname": "",
+      "comment": "rrrrrrrr",
+      "comment_id": "5",
+      "id": 5
+    },
+    {
+      "nickname": "",
+      "comment": "qqqqqqqqq",
+      "comment_id": "5",
+      "id": 6
+    },
+    {
+      "nickname": "1",
+      "comment": "asdfasdfafsd",
+      "comment_id": "1",
+      "id": 7
+    },
+    {
+      "nickname": "123",
+      "comment": "asdf",
+      "comment_id": "1",
+      "id": 8
+    },
+    {
+      "nickname": "21e132daf",
+      "comment": "12321",
+      "comment_id": "2",
+      "id": 9
     }
   ]
 }

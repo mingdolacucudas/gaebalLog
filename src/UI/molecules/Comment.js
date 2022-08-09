@@ -16,16 +16,19 @@ const Comment = () => {
   const fetchComment = async () => {
     const { data } = await axios.get("http://localhost:3001/comments");
     setComments(data);
+    console.log(data);
   };
 
   //post 요청
   const [comment, setComment] = useState({
     nickname: "",
     comment: "",
+    comment_id: param.id,
+    id: 0,
   });
   const onSubmitHandler = (comment) => {
     axios.post("http://localhost:3001/comments", comment);
-    navigate(`/detail/${param.id}`);
+    // navigate(`/detail/${param.id}`);
   };
   //delete 요청
   const onClickDeleteButtonHandler = (deleteComment) => {
@@ -33,20 +36,25 @@ const Comment = () => {
   };
 
   // //edit 요청 - 미완성
-  // const [targetId, setTargetId] = useState(null);
-  // const [editComment, setEditComment] = useState({
-  //   id: 0,
-  //   comment: "",
-  // });
+  const [targetId, setTargetId] = useState({
+    comment_id: param.id,
+  });
+  const [editComment, setEditComment] = useState({
+    nickname: "",
+    comment: "",
+    comment_id: param.id,
+    id: 0,
+  });
 
-  // const onClickEditButtonHandler = (commentId, t) => {
-  //   axios.patch(`http://localhost:3001/comments/${commentId}`, t);
-  // };
+  const onClickEditButtonHandler = (editId, t) => {
+    axios.patch(`http://localhost:3001/comments/${editId}`, t);
+  };
 
   //useEffect
   useEffect(() => {
     fetchComment();
   }, [comment]);
+  console.log(param.id);
 
   return (
     <div>
@@ -54,15 +62,10 @@ const Comment = () => {
         onSubmit={(e) => {
           e.preventDefault();
           onSubmitHandler(comment);
-          setComment({
-            id: 0,
-            nickname: "",
-            comment: "",
-            comment_id: "",
-          });
+          setComment();
         }}
       >
-        <labe>닉네임</labe>
+        <label>닉네임</label>
         <input
           type="text"
           placeholder="닉네임"
@@ -71,10 +74,11 @@ const Comment = () => {
             setComment({
               ...comment,
               nickname: value,
+              comment_id: param.id,
             });
           }}
         />
-        <labe>댓글입력</labe>
+        <label>댓글입력</label>
         <input
           type="text"
           placeholder="댓글입력"
@@ -89,45 +93,66 @@ const Comment = () => {
         <button>댓글 추가하기</button>
 
         <div>
-          {/* //map 에 물음표(?)는 왜들어가지??????? */}
-          {comments?.map((c) => (
-            <div key={c.id}>
-              닉네임:{c.nickname} - 댓글내용:{c.comment}
-              <button
-                type="button"
-                onClick={() => {
-                  onClickDeleteButtonHandler(c.id);
-                  // navigate("/");
-                }}
-              >
-                댓글삭제
-              </button>
-            </div>
-          ))}
+          {/* //map 에 물음표(?)는 옵셔널 체이닝이다 */}
+          {comments?.map((c) => {
+            if (c.comment_id === param.id) {
+              return (
+                <div key={c.id}>
+                  닉네임:{c.nickname} - 댓글내용:{c.comment} id:{c.id}{" "}
+                  comment_id:
+                  {c.comment_id}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      onClickDeleteButtonHandler(c.id);
+                      // navigate("/");
+                    }}
+                  >
+                    댓글삭제
+                  </button>
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      onSubmitHandler(comment);
+                    }}
+                  >
+                    <input
+                      type="text"
+                      placeholder="수정하고싶은 id"
+                      onChange={(c) => {
+                        setTargetId(c.target.value);
+                        //수정후에도 nickname, id, comment_id 값 고정시키기
+                        setEditComment({
+                          ...comment,
+                          comment: c.target.value,
+                        });
+                        console.log(c);
+                      }}
+                    />
+                    <input
+                      type="text"
+                      placeholder="댓글수정"
+                      onChange={(c) => {
+                        setEditComment({
+                          ...comment,
+                          comment: c.target.value,
+                        });
+                      }}
+                    />
+                    <button
+                      type="button"
+                      onClick={() =>
+                        onClickEditButtonHandler(targetId, editComment)
+                      }
+                    >
+                      댓글수정
+                    </button>
+                  </form>
+                </div>
+              );
+            }
+          })}
         </div>
-        {/* <input
-          type="text"
-          placeholder="수정하고싶은 닉네임"
-          onChange={(c) => {
-            setTargetId(c.target.value);
-          }}
-        />
-        <input
-          type="text"
-          placeholder="댓글수정"
-          onChange={(c) => {
-            setEditComment({
-              ...comment,
-              comment: c.target.value,
-            });
-          }}
-        />
-        <button
-          type="button"
-          onClick={() => onClickEditButtonHandler(targetId, editComment)}
-        >
-          댓글수정
-        </button> */}
       </form>
     </div>
   );
