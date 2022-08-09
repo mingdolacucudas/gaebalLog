@@ -62,7 +62,7 @@ const Comment = () => {
           });
         }}
       >
-        <labe>닉네임</labe>
+        <label>닉네임</label>
         <input
           type="text"
           placeholder="닉네임"
@@ -74,7 +74,7 @@ const Comment = () => {
             });
           }}
         />
-        <labe>댓글입력</labe>
+        <label>댓글입력</label>
         <input
           type="text"
           placeholder="댓글입력"
