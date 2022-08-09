@@ -74,23 +74,6 @@ const PostForm = () => {
         />
         <StBtn>작성완료</StBtn>
       </Form>
-
-      <button
-        onClick={() => {
-          let postId = 6;
-          dispatch(deletePost(postId));
-        }}
-      >
-        삭제버튼
-      </button>
-      <button
-        onClick={() => {
-          let postId = 4;
-          dispatch(updatePost({ postId, logData }));
-        }}
-      >
-        수정버튼
-      </button>
     </>
   );
 };
