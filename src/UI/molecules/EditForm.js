@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import axios from "axios";
+
 import { StBtn } from "../atoms/StBtn";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { updatePost } from "../../redux/modules/post";
 import useInputs from "../../hooks/useInput";
-
+import { ImgBox } from "../atoms/ImgBox";
 function EditForm({ logInfo, setModal }) {
   const [editLog, setEditLog] = useState(logInfo); //state에 logInfo(부모로부터 받은 porops)
-  console.log("editLog도 찍어보겠습니다", editLog);
+
   const dispatch = useDispatch();
   const [{ nickname, title, body, img }, onChange, reset, toggle] = useInputs({
     nickname: logInfo.nickname,
@@ -17,52 +17,59 @@ function EditForm({ logInfo, setModal }) {
     img: logInfo.img,
   });
   let logData = { nickname, title, body, img };
-  console.log(logData);
+
   return (
     <StModal>
-      <Form
-        onSubmit={() => {
-          let postId = logInfo.id;
-          let logData = editLog;
-          dispatch(updatePost({ postId, logData }));
-        }}
-      >
-        <Label>제목</Label>
-        <Input
-          name="title"
-          placeholder="title..."
-          onChange={(e) => setEditLog({ ...editLog, title: e.target.value })}
-          value={editLog.title}
-          required
-        />
-        <Label>닉네임 {logInfo.nickname}</Label>
-        <Label>본문</Label>
-        <Text
-          name="body"
-          placeholder="body..."
-          onChange={(e) => setEditLog({ ...editLog, body: e.target.value })}
-          value={editLog.body}
-          required
-        />
-        <Label>사진올리기</Label>
-        <Input
-          name="img"
-          type="url"
-          onChange={(e) => setEditLog({ ...editLog, img: e.target.value })}
-          value={editLog.img}
-        />
-        <BtnContainer>
-          <StBtn>완료</StBtn>
-          <CancelBtn
-            type="button"
-            onClick={() => {
-              setModal(false);
-            }}
-          >
-            취소
-          </CancelBtn>
-        </BtnContainer>
-      </Form>
+      <StModalContainer>
+        <Form
+          onSubmit={() => {
+            let postId = logInfo.id;
+            let logData = editLog;
+            dispatch(updatePost({ postId, logData }));
+            alert("수정이 완료되었습니다");
+          }}
+        >
+          <Input
+            name="title"
+            placeholder="title..."
+            onChange={(e) => setEditLog({ ...editLog, title: e.target.value })}
+            value={editLog.title}
+            required
+          />
+          <label>By {logInfo.nickname}</label>
+          <Text
+            name="body"
+            placeholder="body..."
+            onChange={(e) => setEditLog({ ...editLog, body: e.target.value })}
+            value={editLog.body}
+            required
+          />
+          <ImgBox src={editLog.img} height="12%" />
+          <label>사진올리기</label>
+          <Input
+            name="img"
+            placeholder="이미지 주소를 넣어주세요"
+            type="url"
+            onChange={(e) => setEditLog({ ...editLog, img: e.target.value })}
+            value={editLog.img}
+          />
+          <BtnContainer>
+            <StBtn backgroundColor="black" color="white">
+              완료
+            </StBtn>
+            <StBtn
+              onClick={() => {
+                setModal(false);
+              }}
+              type="button"
+              backgroundColor="gray"
+              color="white"
+            >
+              취소
+            </StBtn>
+          </BtnContainer>
+        </Form>
+      </StModalContainer>
     </StModal>
   );
 }
@@ -77,43 +84,71 @@ const StModal = styled.div`
   left: 0;
   z-index: 99;
 `;
-const Form = styled.form`
+const StModalContainer = styled.div`
+  background-color: white;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 
-  background-color: white;
   width: 50rem;
-  height: 65vh;
+  height: 40rem;
+
   margin: 8% auto 0 auto;
+
   border: none;
   border-radius: 44px;
 `;
-const Label = styled.label`
-  margin-top: 10px;
-  margin-bottom: 10px;
-  width: 43rem;
+
+const Form = styled.form`
+  margin-top: 5%;
+  width: 90%;
+  height: 90%;
+  & label {
+    display: block;
+    margin-bottom: 20px;
+    padding-left: 5px;
+  }
+  & label:nth-of-type(2) {
+    margin-top: 20px;
+  }
 `;
 const Input = styled.input`
-  height: 3em;
-  width: 43rem;
+  &:nth-of-type(1) {
+    font-size: 3.5rem;
+    line-height: 150%;
+  }
+  &:nth-of-type(2) {
+    font-size: 1rem;
+    height: 2rem;
+    border: 1px solid gainsboro;
+    border-radius: 44px;
+  }
+  &::placeholder {
+    color: gainsboro;
+  }
+  width: 100%;
+  margin-bottom: 20px;
+  border: none;
+  padding-left: 5px;
 `;
 const Text = styled.textarea`
-  height: 10rem;
-  width: 43rem;
+  min-height: 10rem;
+  width: 100%;
+
+  padding-left: 5px;
+  margin-bottom: 20px;
+
+  font-size: 1.5rem;
+  line-height: 150%;
+  border: none;
+  overflow-y: auto;
+  resize: none;
 `;
 const BtnContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
+  margin-top: 30px;
 `;
-const CancelBtn = styled(StBtn)`
-  background-color: red;
-  border: 100%;
-  width: 1.5rem;
-  height: 1.5rem;
-`;
-// 뉴모피즘css
-//https://neumorphism.io/#bababa
