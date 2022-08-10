@@ -1,98 +1,96 @@
 {
   "gaebalog": [
     {
-      "id": 8,
-      "nickname": "안",
-      "title": "dfdfdfdd이거 지금 내가 수정중인디",
-      "body": "ㅇㄹㅇㄹdfdfdfddddfdfdfdfdff",
-      "img": ""
+      "nickname": "개발봇",
+      "title": "리액트?",
+      "body": "리액트는.... 컴포넌트를....... ",
+      "img": "https://images.velog.io/images/forest0501/post/8b44094f-fce6-4665-9a53-4b1d2edaba91/reactLogo.jpeg",
+      "id": 1
     },
     {
-      "id": 11,
-      "nickname": "이게뭘까",
-      "title": "ㄹㅎㄹㅎ",
-      "body": "ㅇㄹㅇㄹㅇㄹ",
-      "img": "https://teamsparta.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F388b8aaa-1f41-4bdc-b251-7ee0e1d19ec3%2FUntitled.png?table=block&id=8f6ac830-64e9-49f1-b7bc-562300b8c6c2&spaceId=83c75a39-3aba-4ba4-a792-7aefe4b07895&width=1590&userId=&cache=v2"
+      "nickname": "코딩봇",
+      "title": "자바스트립트란?",
+      "body": "자바스트립트는.....자바스트립트는.....자바스트립트는.....자바스트립트는.....자바스트립트는.....자바스트립트는.....자바스트립트는.....자바스트립트는.....자바스트립트는.....자바스트립트는.....자바스트립트는.....자바스트립트는.....자바스트립트는.....자바스트립트는.....자바스트립트는.....자바스트립트는.....",
+      "img": "https://blog.kakaocdn.net/dn/bNp5o1/btrgkT58S71/77YTYugRulRCb4jvo1HwlK/img.png",
+      "id": 2
     },
     {
-      "id": 12,
-      "nickname": "ff",
-      "title": "ffgf",
-      "body": "ffffff",
-      "img": "https://teamsparta.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F388b8aaa-1f41-4bdc-b251-7ee0e1d19ec3%2FUntitled.png?table=block&id=8f6ac830-64e9-49f1-b7bc-562300b8c6c2&spaceId=83c75a39-3aba-4ba4-a792-7aefe4b07895&width=1590&userId=&cache=v2"
+      "nickname": "깃허브추적자",
+      "title": "깃허브?",
+      "body": "깃허브는.....깃허브는.....깃허브는.....깃허브는.....깃허브는.....깃허브는.....깃허브는.....깃허브는.....깃허브는.....깃허브는.....깃허브는.....깃허브는.....깃허브는.....깃허브는.....깃허브는.....",
+      "img": "https://images.velog.io/images/hongin/post/7a8054c2-e133-4d8e-8724-63e0d6d2d241/%E1%84%83%E1%85%A1%E1%84%8B%E1%85%AE%E1%86%AB%E1%84%85%E1%85%A9%E1%84%83%E1%85%B3%20(1).png",
+      "id": 3
     },
     {
-      "id": 13,
-      "nickname": "fgfg",
-      "title": "fgf",
-      "body": "fgfg",
-      "img": ""
+      "nickname": "리덕스파괴자",
+      "title": "리덕스",
+      "body": "리덕스는.....리덕스는.....리덕스는.....리덕스는.....리덕스는.....리덕스는.....리덕스는.....",
+      "img": "https://images.velog.io/images/devgosunman/post/0b3fabdc-da00-4181-a295-ed448d49cef6/React_Redux.png",
+      "id": 4
+    }
+  ],
+  "comments": [
+    {
+      "nickname": "11",
+      "comment": "ㄴㄴㅁㄹ",
+      "comment_id": "3",
+      "id": 3
     },
     {
-      "id": 14,
-      "nickname": "fgf",
-      "title": "fgfg",
-      "body": "fgf",
-      "img": ""
+      "nickname": "444",
+      "comment": "141424",
+      "comment_id": "4",
+      "id": 4
     },
     {
-      "id": 15,
-      "nickname": "fgfg",
-      "title": "dffg",
-      "body": "fgfg",
-      "img": ""
+      "nickname": "",
+      "comment": "rrrrrrrr",
+      "comment_id": "5",
+      "id": 5
     },
     {
-      "nickname": "gfg",
-      "title": "fgfg",
-      "body": "fffffffffff\nffffff\\\nfffff",
-      "img": "",
-      "id": 16
+      "nickname": "",
+      "comment": "qqqqqqqqq",
+      "comment_id": "5",
+      "id": 6
     },
     {
-      "id": 17,
-      "nickname": "ghgh",
-      "title": "gghghgh",
-      "body": "ghgh",
-      "img": ""
+      "nickname": "1",
+      "comment": "gggggggggg",
+      "comment_id": "1",
+      "id": 7
     },
     {
-      "id": 18,
-      "nickname": "dfdf",
-      "title": "frdf",
-      "body": "dfdf",
-      "img": ""
+      "nickname": "123",
+      "comment": "asdf",
+      "comment_id": "1",
+      "id": 8
     },
     {
-      "nickname": "ggggg",
-      "title": "gggg",
-      "body": "ff\nfgfg\nfgfg\nfgf\n\nfgfg\nfgf",
-      "img": "",
-      "id": 19
+
+      "nickname": "12321312412",
+      "comment": "asdfasdfasdf",
+      "comment_id": "2",
+      "id": 9
     },
     {
-      "id": 20
-    },
-    {
-      "nickname": "너",
-      "title": "야",
-      "body": "진짜짜증나",
-      "img": "",
-      "id": 21
-    },
-    {
-      "nickname": "ㅗㅓㅗ",
-      "title": "ㅗㅓㅗㅓ",
-      "body": "ㅗㅓㅗ",
-      "img": "",
-      "id": 22
-    },
-    {
+      "nickname": "13123",
+      "comment": "dddddddddd",
+      "comment_id": "2",
+      "id": 10
+=======
       "nickname": "랄랄",
       "title": "edfdfd",
       "body": "ㅇㄹㅇㄹㅇㄹㅇㅇㄹㅇㄹㅇㄹ",
       "img": "",
       "id": 23
+    },
+    {
+      "nickname": "밍밍",
+      "title": "오늘의 글은 무엇을써볼까",
+      "body": "음...오늘 공부한것 이 하나도 없는데\n너무 ㅎ피곤하다 \nㅎ ㅏ... 집가서 자고싶다. ",
+      "img": "",
+      "id": 24
     }
   ],
   "comments": [
@@ -107,6 +105,12 @@
       "comment": "fgfg",
       "comment_id": "8",
       "id": 2
+    },
+    {
+      "nickname": "",
+      "comment": "",
+      "comment_id": "23",
+      "id": 3
     }
   ]
 }
