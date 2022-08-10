@@ -4,6 +4,8 @@ import useInputs from "../../hooks/useInput";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { StBtn } from "../atoms/StBtn";
+import { StInput } from "../atoms/StInput";
+
 import { addPost, deletePost, updatePost } from "../../redux/modules/post";
 const PostForm = () => {
   const [{ nickname, title, body, img }, onChange, reset, toggle] = useInputs({
@@ -27,9 +29,9 @@ const PostForm = () => {
     <FormBox>
       <Form onSubmit={onSubmit}>
         <Label>제목</Label>
-        <Input
+        <StInput
           name="title"
-          placeholder="title..."
+          placeholder="제목을 입력해주세요"
           // value={logData.title}
           value={title}
           onChange={onChange}
@@ -37,9 +39,9 @@ const PostForm = () => {
         />
         <Label>닉네임 </Label>
 
-        <Input
+        <StInput
           name="nickname"
-          placeholder="nickname..."
+          placeholder="닉네임을 입력해주세요"
           onChange={onChange}
           value={nickname}
           required
@@ -55,23 +57,25 @@ const PostForm = () => {
         <Label>본문</Label>
         <Text
           name="body"
-          placeholder="body..."
+          placeholder="본문 내용을 입력해주세요"
           onChange={onChange}
           value={body}
           required
         />
         <Label>사진올리기</Label>
-        <Input
+        <StInput
           name="img"
+          placeholder="이미지 주소를 입력해주세요"
           value={img}
           type="url"
           accept="image/*"
           onChange={onChange}
         />
-        <StBtn hoverColor="grey" disabled={toggle ? true : false}>
-          {" "}
-          글작성 하기
-        </StBtn>
+        <StBtnWrapper>
+          <StBtn color="white" backgroundColor="black" width="7rem">
+            작성완료
+          </StBtn>
+        </StBtnWrapper>
       </Form>
     </FormBox>
   );
@@ -83,7 +87,7 @@ const FormBox = styled.div`
   border-style: solid;
   box-shadow: 0 3px 3px 0 grey;
   padding-bottom: 30px;
-  margin: auto;
+  margin: 0 auto 3rem;
   width: 70%;
   height: 40rem;
   display: flex;
@@ -104,20 +108,29 @@ const Label = styled.label`
 const Error = styled.span`
   color: red;
   font-size: small;
+  margin: 10px 0 0 20px;
 `;
-const Input = styled.input`
-  height: 3em;
-  width: 43rem;
-  border-color: rgb(221, 221, 221);
-  border-radius: 4px;
-  border-style: solid;
-  padding: 5px;
-`;
+
 const Text = styled.textarea`
-  height: 10rem;
-  width: 43rem;
-  border-color: rgb(221, 221, 221);
-  border-radius: 4px;
-  border-style: solid;
-  padding: 5px;
+  min-height: 10rem;
+  width: 100%;
+
+  padding: 20px;
+  margin-bottom: 20px;
+
+  border: 1px solid gainsboro;
+  border-radius: 20px;
+
+  font-size: 1rem;
+  line-height: 150%;
+  overflow-y: auto;
+
+  &::placeholder {
+    color: gainsboro;
+  }
+  resize: none;
+`;
+const StBtnWrapper = styled.div`
+  margin-top: 2rem;
+  text-align: center;
 `;

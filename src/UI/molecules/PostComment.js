@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { useState } from "react";
-import { useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+
+import { useParams } from "react-router-dom";
 import useInputs from "../../hooks/useInput";
 import { useDispatch } from "react-redux";
 import { addComment } from "../../redux/modules/comment";
+import { StBtn } from "../atoms/StBtn";
+import { StInput } from "../atoms/StInput";
 
 const PostComment = () => {
   const param = useParams();
@@ -24,31 +25,45 @@ const PostComment = () => {
   };
 
   return (
-    <form
+    <StPostComnt
       onSubmit={(e) => {
         onSubmitHandler(e);
       }}
     >
-      <label>닉네임</label>
-      <input
-        type="text"
-        placeholder="닉네임"
-        name="nickname"
-        value={nickname}
-        onChange={onChange}
-        required
-      />
-      <label>댓글입력</label>
-      <input
-        type="text"
-        name="comment"
-        value={comment}
-        placeholder="댓글입력"
-        onChange={onChange}
-        required
-      />
-      <button>댓글 추가하기</button>
-    </form>
+      <InputWrapper>
+        <StInput
+          type="text"
+          placeholder="닉네임"
+          name="nickname"
+          value={nickname}
+          onChange={onChange}
+          required
+          width="10rem"
+          marginRight="10px"
+        />
+        <StInput
+          type="text"
+          name="comment"
+          value={comment}
+          placeholder="댓글을 입력해주세요"
+          onChange={onChange}
+          required
+          width="30rem"
+        />
+      </InputWrapper>
+
+      <StBtn backgroundColor="black" color="white">
+        저장
+      </StBtn>
+    </StPostComnt>
   );
 };
 export default PostComment;
+
+const StPostComnt = styled.form`
+  display: flex;
+  justify-content: space-between;
+
+  margin: 3rem 0;
+`;
+const InputWrapper = styled.div``;
