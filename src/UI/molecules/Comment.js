@@ -40,6 +40,7 @@ const Comment = () => {
   useEffect(() => {
     dispatch(fetchComments());
   }, []);
+
   return (
     <div>
       <form
