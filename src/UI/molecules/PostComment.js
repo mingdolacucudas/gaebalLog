@@ -36,7 +36,9 @@ const PostComment = () => {
         name="nickname"
         value={nickname}
         onChange={onChange}
+        required
       />
+      //!버튼 required추가
       <label>댓글입력</label>
       <input
         type="text"
@@ -44,6 +46,7 @@ const PostComment = () => {
         value={comment}
         placeholder="댓글입력"
         onChange={onChange}
+        required
       />
       <button>댓글 추가하기</button>
     </form>

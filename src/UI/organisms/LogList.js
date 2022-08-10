@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts } from "../../redux/modules/post";
 
@@ -19,7 +17,6 @@ const LogList = () => {
   const reverse = [...log].reverse();
 
   useEffect(() => {
-    console.log(log);
     dispatch(fetchPosts());
   }, []);
 
