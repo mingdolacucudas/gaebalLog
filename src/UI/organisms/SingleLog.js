@@ -5,10 +5,12 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { StBtn } from "../atoms/StBtn";
+import { ImgBox } from "../atoms/ImgBox";
+
 import { fetchPosts, deletePost } from "../../redux/modules/post";
 
 import EditForm from "../molecules/EditForm";
-import Comment from "../molecules/Comment";
+import Comment from "../organisms/Comment";
 
 const SingleLog = () => {
   //const [log, setLog] = useState(null); //json server의 값을 불러오기 위해 useState선언
@@ -37,7 +39,7 @@ const SingleLog = () => {
   };
 
   return (
-    <StArticle>
+    <StLogPage>
       {log?.map((log) => {
         if (log.id === parseInt(param.id)) {
           return (
@@ -45,19 +47,23 @@ const SingleLog = () => {
               <h1>{log.title}</h1>
               <StInformation>
                 <p>
-                  By {log.nickname}, id체크:{log.id} -나중에지울거에요
+                  By {log.nickname} id체크:{log.id} -나중에지울거에요
                 </p>
                 <StBtnContainer>
                   <StBtnGray onClick={() => onShowEditForm()}>수정</StBtnGray>
                   <StBtnGray
-                    onClick={() => dispatch(deletePost(log.id)).then(nav("/"))}
+                    onClick={() =>
+                      window.confirm("정말로 삭제하시겠습니까?")
+                        ? dispatch(deletePost(log.id)).then(nav("/"))
+                        : null
+                    }
                   >
                     삭제
                   </StBtnGray>
                 </StBtnContainer>
               </StInformation>
               <StLogBody>
-                <img src={log.img} alt="" />
+                <ImgBox src={log.img} alt="" />
                 <p>{log.body}</p>
                 {modal === true ? (
                   <EditForm logInfo={log} setModal={setModal} />
@@ -70,19 +76,22 @@ const SingleLog = () => {
         }
       })}
       <Comment />
-    </StArticle>
+    </StLogPage>
   );
 };
 
 export default SingleLog;
 
-const StArticle = styled.div`
+const StLogPage = styled.div`
   width: 80%;
   margin: 1.5rem auto;
   padding: 1rem;
   & h1 {
     font-size: 3rem;
+    line-height: 120%;
   }
+
+  background-color: yellowgreen;
 `;
 
 const StInformation = styled.div`
@@ -110,8 +119,9 @@ const StBtnGray = styled(StBtn)`
 
 const StLogBody = styled.div`
   & p {
-    text-align: center;
+    /* text-align: center; */
     line-height: 200%; //행간조절 브라우저 문자 기준크기에 대한 %값
     font-size: 22px;
+    border-bottom: 1px solid gray;
   }
 `;

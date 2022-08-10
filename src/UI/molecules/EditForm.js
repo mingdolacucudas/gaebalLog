@@ -26,6 +26,7 @@ function EditForm({ logInfo, setModal }) {
             let postId = logInfo.id;
             let logData = editLog;
             dispatch(updatePost({ postId, logData }));
+            alert("수정이 완료되었습니다");
           }}
         >
           <Input
