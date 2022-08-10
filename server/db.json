@@ -67,7 +67,6 @@
       "id": 8
     },
     {
-
       "nickname": "12321312412",
       "comment": "asdfasdfasdf",
       "comment_id": "2",
@@ -78,39 +77,12 @@
       "comment": "dddddddddd",
       "comment_id": "2",
       "id": 10
-=======
-      "nickname": "랄랄",
-      "title": "edfdfd",
-      "body": "ㅇㄹㅇㄹㅇㄹㅇㅇㄹㅇㄹㅇㄹ",
-      "img": "",
-      "id": 23
     },
     {
-      "nickname": "밍밍",
-      "title": "오늘의 글은 무엇을써볼까",
-      "body": "음...오늘 공부한것 이 하나도 없는데\n너무 ㅎ피곤하다 \nㅎ ㅏ... 집가서 자고싶다. ",
-      "img": "",
-      "id": 24
-    }
-  ],
-  "comments": [
-    {
-      "nickname": "fgff",
-      "comment": "fgfg",
-      "comment_id": "8",
-      "id": 1
-    },
-    {
-      "nickname": "fgg",
-      "comment": "fgfg",
-      "comment_id": "8",
-      "id": 2
-    },
-    {
-      "nickname": "",
-      "comment": "",
-      "comment_id": "23",
-      "id": 3
+      "nickname": "ㅎㅇㅎㅇㅎㅇ",
+      "comment": "ㄷㄱㄷㄱㄷㄱㄷ",
+      "comment_id": "4",
+      "id": 11
     }
   ]
 }

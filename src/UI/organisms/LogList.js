@@ -37,8 +37,6 @@ const LogList = () => {
         <p></p>
         <div>
           <StTempBoxOutline>
-           
-          
             {reverse.map((x) => {
               return (
                 <StTempBox
