@@ -3,14 +3,15 @@ import styled from "styled-components";
 export const StBtn = styled.button`
   width: 5rem;
   height: 30px;
-  /* border-radius: 7px;
-  background-color: white;
-  border-color: rgb(177, 246, 122);
-  border-style: solid; */
 
   cursor: pointer;
 
   border-radius: 20px;
-  background-color: transparent;
+  background-color: ${(props) => props.backgroundColor || "transparent"};
+  color: ${(props) => props.color || "black"};
   border: none;
+
+  &:hover {
+    color: ${(props) => props.hoverColor};
+  }
 `;

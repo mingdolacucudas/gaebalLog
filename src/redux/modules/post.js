@@ -6,56 +6,71 @@ const initialState = {
   posts: [],
   error: "",
 };
-//!generate pending, fulfilled , rejected action types
-//! asyncthunk has two parameters . action type, callback function
-const fetchPosts = createAsyncThunk("post/fetchPost", async (thunkApi) => {
-  const res = await fetch("http://localhost:3001/gaebalog").then((data) =>
-    data.json()
-  );
-  console.log(res);
-  return res;
-});
+
+export const fetchPosts = createAsyncThunk(
+  "post/fetchPost",
+  async (thunkApi) => {
+    try {
+      const res = await axios.get("http://localhost:3001/gaebalog");
+      return res.data;
+    } catch (error) {
+      return error.message;
+    }
+  }
+);
 
 export const addPost = createAsyncThunk("post/addPost", async (logData) => {
-  const response = await axios.post("http://localhost:3001/gaebalog", logData);
-  return response.data;
+  try {
+    const response = await axios.post(
+      "http://localhost:3001/gaebalog",
+      logData
+    );
+    return response.data;
+  } catch (error) {
+    return error.message;
+  }
 });
 
 export const deletePost = createAsyncThunk(
   "delete/deletePost",
   async (postId) => {
-    const response = await axios.delete(
-      `http://localhost:3001/gaebalog/${postId}`
-    );
-    return postId;
+    try {
+      const response = await axios.delete(
+        `http://localhost:3001/gaebalog/${postId}`
+      );
+      return postId;
+    } catch (error) {
+      return error.message;
+    }
   }
 );
 
 export const updatePost = createAsyncThunk(
   "put/updatePost",
   async ({ logData, postId }) => {
-    const response = await axios.put(
-      `http://localhost:3001/gaebalog/${postId}`,
-      logData
-    );
-    console.log(postId);
-    console.log(logData);
-    return { postId, logData };
+    try {
+      const response = await axios.put(
+        `http://localhost:3001/gaebalog/${postId}`,
+        logData
+      );
+      return { postId, logData };
+    } catch (error) {
+      return error.message;
+    }
   }
 );
 
-//!builder is cases of each lifecycle methods
 const postSlice = createSlice({
   name: "posts",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    //!보여주기
     builder.addCase(fetchPosts.pending, (state) => {
       state.loading = true;
     });
     builder.addCase(fetchPosts.fulfilled, (state, action) => {
       state.loading = false;
-
       state.posts = action.payload;
       state.error = "";
     });
@@ -64,15 +79,37 @@ const postSlice = createSlice({
       state.posts = [];
       state.error = action.error.message;
     });
+    //!가져오기
+    builder.addCase(addPost.pending, (state) => {
+      state.loading = true;
+    });
     builder.addCase(addPost.fulfilled, (state, action) => {
       state.loading = false;
       state.posts = [...state.posts, action.payload];
       state.error = "";
     });
+    builder.addCase(addPost.rejected, (state, action) => {
+      state.loading = false;
+      state.posts = [];
+      state.error = action.error.message;
+    });
+    //!삭제하기
+    builder.addCase(deletePost.pending, (state) => {
+      state.loading = true;
+    });
     builder.addCase(deletePost.fulfilled, (state, action) => {
       state.loading = false;
       state.posts = state.posts.filter((post) => post.id != action.payload);
       state.error = "";
+    });
+    builder.addCase(deletePost.rejected, (state, action) => {
+      state.loading = false;
+      state.posts = [];
+      state.error = action.error.message;
+    });
+    //!수정하기
+    builder.addCase(updatePost.pending, (state) => {
+      state.loading = true;
     });
     builder.addCase(updatePost.fulfilled, (state, action) => {
       state.loading = false;
@@ -85,8 +122,13 @@ const postSlice = createSlice({
       });
       state.error = "";
     });
+    builder.addCase(updatePost.rejected, (state, action) => {
+      state.loading = false;
+      state.posts = [];
+      state.error = action.error.message;
+    });
   },
 });
 
-export { postSlice, fetchPosts };
+export { postSlice };
 export const postReducer = postSlice.reducer;

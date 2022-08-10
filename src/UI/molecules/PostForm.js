@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { StBtn } from "../atoms/StBtn";
 import { addPost, deletePost, updatePost } from "../../redux/modules/post";
-
 const PostForm = () => {
   const [{ nickname, title, body, img }, onChange, reset, toggle] = useInputs({
     nickname: "",
@@ -25,7 +24,7 @@ const PostForm = () => {
   };
 
   return (
-    <>
+    <FormBox>
       <Form onSubmit={onSubmit}>
         <Label>제목</Label>
         <Input
@@ -42,7 +41,6 @@ const PostForm = () => {
           name="nickname"
           placeholder="nickname..."
           onChange={onChange}
-          // value={logData.nickname}
           value={nickname}
           required
         />
@@ -59,26 +57,35 @@ const PostForm = () => {
           name="body"
           placeholder="body..."
           onChange={onChange}
-          // value={logData.body}
           value={body}
           required
         />
         <Label>사진올리기</Label>
         <Input
           name="img"
-          // value={logData.img}
           value={img}
           type="url"
           accept="image/*"
           onChange={onChange}
         />
-        <StBtn>작성완료</StBtn>
+        <StBtn disabled={toggle ? true : false}>작성완료</StBtn>
       </Form>
-    </>
+    </FormBox>
   );
 };
 export default PostForm;
 
+const FormBox = styled.div`
+  border-color: rgb(221, 221, 221);
+  border-style: solid;
+  box-shadow: 0 3px 3px 0 grey;
+  padding-bottom: 30px;
+  margin: auto;
+  width: 70%;
+  height: 40rem;
+  display: flex;
+  border-radius: 4px;
+`;
 const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -87,8 +94,8 @@ const Form = styled.form`
   margin: auto;
 `;
 const Label = styled.label`
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   width: 43rem;
 `;
 const Error = styled.span`
@@ -98,8 +105,16 @@ const Error = styled.span`
 const Input = styled.input`
   height: 3em;
   width: 43rem;
+  border-color: rgb(221, 221, 221);
+  border-radius: 4px;
+  border-style: solid;
+  padding: 5px;
 `;
 const Text = styled.textarea`
   height: 10rem;
   width: 43rem;
+  border-color: rgb(221, 221, 221);
+  border-radius: 4px;
+  border-style: solid;
+  padding: 5px;
 `;

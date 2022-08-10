@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-import axios from "axios"; //axios 임포트(서버의 데이터를 조회할 때 사용)
-import { useParams } from "react-router-dom";
+
+import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import EditForm from "../molecules/EditForm";
+
 import { StBtn } from "../atoms/StBtn";
+import { ImgBox } from "../atoms/ImgBox";
+
 import { fetchPosts, deletePost } from "../../redux/modules/post";
+
+import EditForm from "../molecules/EditForm";
+import Comment from "../organisms/Comment";
 
 const SingleLog = () => {
   //const [log, setLog] = useState(null); //json server의 값을 불러오기 위해 useState선언
   const param = useParams();
   const dispatch = useDispatch();
-  const log = useSelector((state) => {
-    return state.postSlice.posts;
-  });
+  const nav = useNavigate();
+  const log = useSelector((state) => state.postSlice.posts);
 
   //!겟함수
 
@@ -36,48 +39,60 @@ const SingleLog = () => {
   };
 
   return (
-    <StArticle>
+    <StLogPage>
       {log?.map((log) => {
         if (log.id === parseInt(param.id)) {
           return (
             <div key={log.id}>
               <h1>{log.title}</h1>
               <StInformation>
-                <p>
-                  By {log.nickname}, id체크:{log.id} -나중에지울거에요
-                </p>
+                <p>By {log.nickname}</p>
                 <StBtnContainer>
-                  <StBtn onClick={() => onShowEditForm()}>수정</StBtn>
-                  <StBtn onClick={() => dispatch(deletePost(log.id))}>
+                  <StBtn
+                    onClick={() => onShowEditForm()}
+                    color="gray"
+                    hoverColor="black"
+                  >
+                    수정
+                  </StBtn>
+                  <StBtn
+                    onClick={() =>
+                      window.confirm("정말로 삭제하시겠습니까?")
+                        ? dispatch(deletePost(log.id)).then(nav("/"))
+                        : null
+                    }
+                    color="gray"
+                    hoverColor="#aa1408"
+                  >
                     삭제
                   </StBtn>
                 </StBtnContainer>
               </StInformation>
               <StLogBody>
-                <img src={log.img} alt="" />
+                <ImgBox src={log.img} alt="" />
                 <p>{log.body}</p>
-                {modal === true ? (
-                  <EditForm logInfo={log} setModal={setModal} />
-                ) : null}
               </StLogBody>
+              {modal ? <EditForm logInfo={log} setModal={setModal} /> : null}
             </div>
           );
         } else {
           return null;
         }
       })}
-    </StArticle>
+      <Comment />
+    </StLogPage>
   );
 };
 
 export default SingleLog;
 
-const StArticle = styled.div`
+const StLogPage = styled.div`
   width: 80%;
   margin: 1.5rem auto;
   padding: 1rem;
   & h1 {
     font-size: 3rem;
+    line-height: 120%;
   }
 `;
 
@@ -93,21 +108,12 @@ const StInformation = styled.div`
 
 const StBtnContainer = styled.div``;
 
-// 기존의 StBtn 컴포넌트에서 여기 만의 새로운 속성 추가!!
-const StBtnGray = styled(StBtn)`
-  color: gray;
-  &:nth-of-type(1):hover {
-    color: black;
-  }
-  &:nth-of-type(2):hover {
-    color: #aa1408;
-  }
-`;
-
 const StLogBody = styled.div`
   & p {
-    text-align: center;
     line-height: 200%; //행간조절 브라우저 문자 기준크기에 대한 %값
-    font-size: 22px;
+    font-size: 1.5rem;
+    margin: 25px 0;
   }
+  margin-bottom: 25px;
+  border-bottom: 1px solid gainsboro;
 `;

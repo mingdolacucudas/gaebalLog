@@ -1,23 +1,27 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
-import { useState } from "react";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import axios from "axios";
+
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faKeyboard } from "@fortawesome/free-solid-svg-icons";
+import styled from "styled-components";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPosts } from "../../redux/modules/post";
 
 const LogList = () => {
   const navi = useNavigate();
-
-  let [dbData, setDbData] = useState([]);
+  const dispatch = useDispatch();
+  const log = useSelector((state) => {
+    return state.postSlice.posts;
+  });
+  //! 배열을 뒤집어서 최신값을 끌어올림
+  //!정렬버튼도 있으면 좋겠다.
+  //!로딩중 화면도 있으면 좋겠다.
+  const reverse = [...log].reverse();
 
   useEffect(() => {
-    axios.get("http://localhost:3001/gaebalog").then((res) => {
-      setDbData(res.data);
-    });
+    dispatch(fetchPosts());
   }, []);
 
   return (
@@ -33,7 +37,9 @@ const LogList = () => {
         <p></p>
         <div>
           <StTempBoxOutline>
-            {dbData.map((x) => {
+           
+          
+            {reverse.map((x) => {
               return (
                 <StTempBox
                   key={x.id}
