@@ -103,6 +103,7 @@ const StImg = styled.img`
   width: 99%;
   height: 200px;
   border: 3px solid #fafafa;
+  margin: auto;
 `;
 const TitleBox = styled.h2`
   margin: 2px 5px 2px 5px;
