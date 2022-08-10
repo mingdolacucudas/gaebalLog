@@ -46,29 +46,33 @@ const SingleLog = () => {
             <div key={log.id}>
               <h1>{log.title}</h1>
               <StInformation>
-                <p>
-                  By {log.nickname} id체크:{log.id} -나중에지울거에요
-                </p>
+                <p>By {log.nickname}</p>
                 <StBtnContainer>
-                  <StBtnGray onClick={() => onShowEditForm()}>수정</StBtnGray>
-                  <StBtnGray
+                  <StBtn
+                    onClick={() => onShowEditForm()}
+                    color="gray"
+                    hoverColor="black"
+                  >
+                    수정
+                  </StBtn>
+                  <StBtn
                     onClick={() =>
                       window.confirm("정말로 삭제하시겠습니까?")
                         ? dispatch(deletePost(log.id)).then(nav("/"))
                         : null
                     }
+                    color="gray"
+                    hoverColor="#aa1408"
                   >
                     삭제
-                  </StBtnGray>
+                  </StBtn>
                 </StBtnContainer>
               </StInformation>
               <StLogBody>
                 <ImgBox src={log.img} alt="" />
                 <p>{log.body}</p>
-                {modal === true ? (
-                  <EditForm logInfo={log} setModal={setModal} />
-                ) : null}
               </StLogBody>
+              {modal ? <EditForm logInfo={log} setModal={setModal} /> : null}
             </div>
           );
         } else {
@@ -90,8 +94,6 @@ const StLogPage = styled.div`
     font-size: 3rem;
     line-height: 120%;
   }
-
-  background-color: yellowgreen;
 `;
 
 const StInformation = styled.div`
@@ -106,22 +108,12 @@ const StInformation = styled.div`
 
 const StBtnContainer = styled.div``;
 
-// 기존의 StBtn 컴포넌트에서 여기 만의 새로운 속성 추가!!
-const StBtnGray = styled(StBtn)`
-  color: gray;
-  &:nth-of-type(1):hover {
-    color: black;
-  }
-  &:nth-of-type(2):hover {
-    color: #aa1408;
-  }
-`;
-
 const StLogBody = styled.div`
   & p {
-    /* text-align: center; */
     line-height: 200%; //행간조절 브라우저 문자 기준크기에 대한 %값
-    font-size: 22px;
-    border-bottom: 1px solid gray;
+    font-size: 1.5rem;
+    margin: 25px 0;
   }
+  margin-bottom: 25px;
+  border-bottom: 1px solid gainsboro;
 `;

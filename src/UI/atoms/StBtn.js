@@ -10,4 +10,8 @@ export const StBtn = styled.button`
   background-color: ${(props) => props.backgroundColor || "transparent"};
   color: ${(props) => props.color || "black"};
   border: none;
+
+  &:hover {
+    color: ${(props) => props.hoverColor};
+  }
 `;
