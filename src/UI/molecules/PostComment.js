@@ -38,7 +38,6 @@ const PostComment = () => {
         onChange={onChange}
         required
       />
-      //!버튼 required추가
       <label>댓글입력</label>
       <input
         type="text"

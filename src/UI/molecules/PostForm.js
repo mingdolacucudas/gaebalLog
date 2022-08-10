@@ -68,7 +68,10 @@ const PostForm = () => {
           accept="image/*"
           onChange={onChange}
         />
-        <StBtn disabled={toggle ? true : false}>작성완료</StBtn>
+        <StBtn hoverColor="grey" disabled={toggle ? true : false}>
+          {" "}
+          글작성 하기
+        </StBtn>
       </Form>
     </FormBox>
   );
