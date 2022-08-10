@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const StBtn = styled.button`
-  width: 5rem;
-  height: 30px;
+  width: ${(props) => props.width || "5rem"};
+  height: 2rem;
 
   cursor: pointer;
 
@@ -13,5 +13,6 @@ export const StBtn = styled.button`
 
   &:hover {
     color: ${(props) => props.hoverColor};
+    background-color: ${(props) => props.hoverBackgroundColor};
   }
 `;

@@ -1,8 +1,4 @@
 import React from "react";
-
-import { useParams } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faKeyboard } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -16,9 +12,9 @@ const LogList = () => {
   const log = useSelector((state) => {
     return state.postSlice.posts;
   });
-  //! 배열을 뒤집어서 최신값을 끌어올림
-  //!정렬버튼도 있으면 좋겠다.
-  //!로딩중 화면도 있으면 좋겠다.
+  const onErrorImg = (e) => {
+    e.target.src = "/gaelogLogo.png";
+  };
   const reverse = [...log].reverse();
 
   useEffect(() => {
@@ -26,114 +22,99 @@ const LogList = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <StOne>
-        <StRecordBtn
+        <StIconBox
           onClick={() => {
             navi("/post");
           }}
         >
-          <FontAwesomeIcon icon={faKeyboard} size="2x" />
-        </StRecordBtn>
-        <p></p>
-        <div>
-          <StTempBoxOutline>
-            {reverse.map((x) => {
-              return (
-                <StTempBox
-                  key={x.id}
-                  onClick={() => {
-                    navi(`/detail/${x.id}`);
-                  }}
-                >
-                  <StImg src={x.img} onerror="this.style.display='none'" />
-                  <div>{x.title}</div>
+          <StBtn hoverColor="grey">글작성 하기</StBtn>
+        </StIconBox>
+        <StTempBoxOutline>
+          {reverse.map((x) => {
+            return (
+              <StTempBox
+                key={x.id}
+                onClick={() => {
+                  navi(`/detail/${x.id}`);
+                }}
+              >
+                <StImg src={x.img} onError={onErrorImg} />
+                <LayoutBox>
+                  {" "}
+                  <TitleBox>{x.title}</TitleBox>
                   <StBody>{x.body}</StBody>
                   <StbtnStyle>내용 더보기...</StbtnStyle>
-                </StTempBox>
-              );
-            })}
-          </StTempBoxOutline>
-        </div>
+                </LayoutBox>
+              </StTempBox>
+            );
+          })}
+        </StTempBoxOutline>
       </StOne>
-    </div>
+    </>
   );
 };
 
 const StOne = styled.div`
-  display: block;
-  box-sizing: border-box;
-  width: 1200px;
-  height: 2000px;
-  margin: 20px 0px 10px 30px;
-  flex-direction: row;
-  justify-content: row;
-  justify-content: flex-start;
-`;
-
-const StRecordBtn = styled.button`
   display: flex;
-  flex-wrap: wrap;
-  border-radius: 5px;
-  color: black;
-  height: 50px;
-  width: 70px;
-  border: 0;
-  margin: 10px;
-  margin-left: 900px;
-  span {
-    font-size: 20px;
-    &:hover {
-      font-size: 22px;
-    }
-    &:active {
-      opacity: 10;
-    }
-  }
-  cursor: pointer;
-  justify-content: space-around;
+  width: 90%;
+  margin: auto;
+  align-content: center;
   justify-content: center;
-  align-items: center;
-  /* background: linear-gradient(145deg, #439889, #ffffff);
-  box-shadow: 9px 9px 18px #e0e0e0, -9px -9px 18px #ffffff; */
+  flex-direction: column;
+`;
+const StIconBox = styled.div`
+  display: flex;
+  justify-content: flex-end;
 `;
 
 const StTempBoxOutline = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  text-align: center;
-  white-space: normal;
-  width: 1200px;
-  border-radius: 5px;
-  /* background-color: aliceblue; */
-  gap: 5px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 `;
 
 const StTempBox = styled.div`
-  /* justify-content: center; */
-  /* align-items: center; */
   padding: 12px;
-  width: 330px;
-  height: 400px;
-  /* flex-wrap: wrap; */
+  width: 90%;
+  height: 26rem;
+  margin: auto;
   margin-top: 10px;
-  /* overflow: auto; */
-  div {
-    height: 50px;
-  }
+
   background-color: #fafafa;
 `;
 
 const StImg = styled.img`
-  object-fit: cover;
-  width: 300px;
+  background-size: cover;
+  margin: auto;
+  width: 99%;
   height: 200px;
   border: 3px solid #fafafa;
   margin: auto;
 `;
+const TitleBox = styled.h2`
+  margin: 2px 5px 2px 5px;
+  width: 15rem;
+  height:3rem;
+  padding:0 5px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+출처: https://jos39.tistory.com/211 [JOS39 블로그:티스토리]
+`;
 
 const StBody = styled.div`
-  /* overflow: hidden; */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: box;
+  margin-top: 1px;
+  max-height: 80px;
+  overflow: hidden;
+  vertical-align: top;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 `;
 
 const StbtnStyle = styled.button`
@@ -142,7 +123,16 @@ const StbtnStyle = styled.button`
   border: 1px;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 40px;
+  width: 9rem;
+  height: 2rem;
+  margin: auto;
 `;
 
+const LayoutBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 18rem;
+  height: 12rem;
+`;
 export default LogList;

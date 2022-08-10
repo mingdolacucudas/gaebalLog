@@ -5,7 +5,7 @@ import { StBtn } from "../atoms/StBtn";
 import { useDispatch } from "react-redux";
 import { updatePost } from "../../redux/modules/post";
 import useInputs from "../../hooks/useInput";
-import { ImgBox } from "../atoms/ImgBox";
+import { StImgBox } from "../atoms/StImgBox";
 function EditForm({ logInfo, setModal }) {
   const [editLog, setEditLog] = useState(logInfo); //state에 logInfo(부모로부터 받은 porops)
 
@@ -31,7 +31,7 @@ function EditForm({ logInfo, setModal }) {
         >
           <Input
             name="title"
-            placeholder="title..."
+            placeholder="제목을 입력해주세요"
             onChange={(e) => setEditLog({ ...editLog, title: e.target.value })}
             value={editLog.title}
             required
@@ -39,12 +39,12 @@ function EditForm({ logInfo, setModal }) {
           <label>By {logInfo.nickname}</label>
           <Text
             name="body"
-            placeholder="body..."
+            placeholder="본문 내용을 입력해주세요"
             onChange={(e) => setEditLog({ ...editLog, body: e.target.value })}
             value={editLog.body}
             required
           />
-          <ImgBox src={editLog.img} height="12%" />
+          <StImgBox src={editLog.img} height="12%" />
           <label>사진올리기</label>
           <Input
             name="img"
