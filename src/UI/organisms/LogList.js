@@ -155,7 +155,7 @@ const StTempBoxOutline = styled.div`
   width: 1200px;
   height: 2000px;
   border-radius: 5px;
-  background-color: aliceblue;
+  /* background-color: aliceblue; */
 `;
 
 const StTempBox = styled.div`
@@ -169,7 +169,7 @@ const StTempBox = styled.div`
   /* flex-wrap: wrap; */
   margin-top: 10px;
   overflow: scroll;
-  background-color: beige;
+  /* background-color: beige; */
 `;
 
 const StbtnStyle = styled.button`
