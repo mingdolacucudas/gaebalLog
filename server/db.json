@@ -64,24 +64,6 @@
       "img": ""
     },
     {
-<<<<<<< HEAD
-      "nickname": "12321312412",
-      "comment": "asdfasdfasdf",
-      "comment_id": "2",
-      "id": 9
-    },
-    {
-      "nickname": "13123",
-      "comment": "dddddddddd",
-      "comment_id": "2",
-      "id": 10
-    },
-    {
-      "nickname": "ㅎㅇㅎㅇㅎㅇ",
-      "comment": "ㄷㄱㄷㄱㄷㄱㄷ",
-      "comment_id": "4",
-      "id": 11
-=======
       "nickname": "ggggg",
       "title": "gggg",
       "body": "ff\nfgfg\nfgfg\nfgf\n\nfgfg\nfgf",
@@ -150,7 +132,12 @@
       "comment": "dfdf",
       "comment_id": "22",
       "id": 5
->>>>>>> 56466e9873a1b9e2b96cffd0972730ccce187fb7
+    },
+    {
+      "nickname": "1231",
+      "comment": "asfdasf",
+      "comment_id": "22",
+      "id": 6
     }
   ]
 }

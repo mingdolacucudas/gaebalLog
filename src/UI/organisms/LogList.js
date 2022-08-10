@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts } from "../../redux/modules/post";
+import { StBtn } from "../atoms/StBtn";
 
 const LogList = () => {
   const navi = useNavigate();
@@ -45,12 +46,9 @@ const LogList = () => {
                     navi(`/detail/${x.id}`);
                   }}
                 >
-                  <form>
-                    <StImg src={x.img} />
-
-                    <div>{x.title}</div>
-                    <StBody>{x.body}</StBody>
-                  </form>
+                  <StImg src={x.img} onerror="this.style.display='none'" />
+                  <div>{x.title}</div>
+                  <StBody>{x.body}</StBody>
                   <StbtnStyle>내용 더보기...</StbtnStyle>
                 </StTempBox>
               );
@@ -116,10 +114,10 @@ const StTempBox = styled.div`
   /* align-items: center; */
   padding: 12px;
   width: 330px;
-  height: 300px;
+  height: 400px;
   /* flex-wrap: wrap; */
   margin-top: 10px;
-  overflow: auto;
+  /* overflow: auto; */
   div {
     height: 50px;
   }
@@ -128,13 +126,14 @@ const StTempBox = styled.div`
 
 const StImg = styled.img`
   object-fit: cover;
-  width: 330px;
+  width: 300px;
   height: 200px;
   border: 3px solid #fafafa;
+  margin: auto;
 `;
 
 const StBody = styled.div`
-  overflow: hidden;
+  /* overflow: hidden; */
 `;
 
 const StbtnStyle = styled.button`
@@ -143,6 +142,7 @@ const StbtnStyle = styled.button`
   border: 1px;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 40px;
 `;
 
 export default LogList;
