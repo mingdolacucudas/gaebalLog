@@ -48,11 +48,11 @@ const PostComment = () => {
           placeholder="댓글을 입력해주세요"
           onChange={onChange}
           required
-          width="33rem"
+          width="30rem"
         />
       </InputWrapper>
 
-      <StBtn backgroundColor="black" color="white" width="10rem">
+      <StBtn backgroundColor="black" color="white">
         저장
       </StBtn>
     </StPostComnt>
