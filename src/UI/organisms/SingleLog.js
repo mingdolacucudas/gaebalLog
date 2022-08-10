@@ -5,7 +5,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { StBtn } from "../atoms/StBtn";
-import { ImgBox } from "../atoms/ImgBox";
+import { StImgBox } from "../atoms/StImgBox";
 
 import { fetchPosts, deletePost } from "../../redux/modules/post";
 
@@ -46,8 +46,11 @@ const SingleLog = () => {
             <div key={log.id}>
               <h1>{log.title}</h1>
               <StInformation>
-                <p>By {log.nickname}</p>
-                <StBtnContainer>
+                <p>
+                  By{" "}
+                  <span style={{ "font-weight": "bold" }}>{log.nickname}</span>
+                </p>
+                <StBtnWrapper>
                   <StBtn
                     onClick={() => onShowEditForm()}
                     color="gray"
@@ -66,10 +69,10 @@ const SingleLog = () => {
                   >
                     삭제
                   </StBtn>
-                </StBtnContainer>
+                </StBtnWrapper>
               </StInformation>
               <StLogBody>
-                <ImgBox src={log.img} alt="" />
+                <StImgBox src={log.img} alt="" />
                 <p>{log.body}</p>
               </StLogBody>
               {modal ? <EditForm logInfo={log} setModal={setModal} /> : null}
@@ -106,7 +109,7 @@ const StInformation = styled.div`
   color: #1f1f1f;
 `;
 
-const StBtnContainer = styled.div``;
+const StBtnWrapper = styled.div``;
 
 const StLogBody = styled.div`
   & p {
