@@ -6,69 +6,19 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faKeyboard } from "@fortawesome/free-solid-svg-icons";
 
 const LogList = () => {
   const navi = useNavigate();
-  const param = useParams();
-  // const [data, setData] = useState([]);
-  // console.log(data);
 
-  // async function getData() {
-  //   try {
-  //     const res = await axios.get("http://localhost:3001/gaebalog");
-  //     console.log(res.data);
-  //     // setDbData(res.data);
-  //     //setIdNumber(res.data.length + 1);
-  //   } catch (error) {
-  //     alert("네트워크오류입니다");
-  //   }
-  // }
-  // getData();
-
-  // const callGbAxios = () => {
-  //   axios({
-  //     method: "get",
-  //     url: "http://localhost:3001/gaebalog",
-  //   }).then((response) => {
-  //     setData([...response.data]);
-  //     console.log(response.data);
-  //   });
-  //   console.log(data);
-  //   // axios.get("http://localhost:3003/gaebalog").then((response) => {
-  //   //   console.log(response);
-  //   // });
-
-  //   // axios.post("http://localhost:3003/gaebalog").then((response) => {
-  //   //   console.log(response);
-  //   // });
-  // };
-
-  // const callAxios = () => {};
   let [dbData, setDbData] = useState([]);
 
   useEffect(() => {
     axios.get("http://localhost:3001/gaebalog").then((res) => {
       setDbData(res.data);
-      // console.log(res.data);
-      // console.log(dbData);
     });
   }, []);
-  // console.log(dbData);
-  // useEffect(() => {
-  //   callGbAxios();
-  // }, []);
-
-  // let [swData, setSwData] = useState(false);
-  // console.log(swData);
-  // // 디비데이터가 undefined일때는 스위치는 false 다. 디비데이터가 undefined아닐때는 스위치를 true로 바꿔준다
-  // if (dbData === undefined) {
-  //   setSwData(false);
-  // } else {
-  //   setSwData(true);
-  // }
-  // {
-  //   swData ? "" : "로딩중입니다";
-  // }
 
   return (
     <div>
@@ -78,7 +28,7 @@ const LogList = () => {
             navi("/post");
           }}
         >
-          <span>기록하기</span>
+          <FontAwesomeIcon icon={faKeyboard} size="2x" />
         </StRecordBtn>
         <p></p>
         <div>
@@ -92,13 +42,12 @@ const LogList = () => {
                   }}
                 >
                   <form>
-                    <div>{x.id}</div>
-                    <div>{x.nickname}</div>
+                    <StImg src={x.img} />
+
                     <div>{x.title}</div>
-                    <div>{x.body}</div>
-                    <div>{x.image}</div>
+                    <StBody>{x.body}</StBody>
                   </form>
-                  <StbtnStyle>See more...</StbtnStyle>
+                  <StbtnStyle>내용 더보기...</StbtnStyle>
                 </StTempBox>
               );
             })}
@@ -113,7 +62,7 @@ const StOne = styled.div`
   display: block;
   box-sizing: border-box;
   width: 1200px;
-  height: 800px;
+  height: 2000px;
   margin: 20px 0px 10px 30px;
   flex-direction: row;
   justify-content: row;
@@ -126,9 +75,10 @@ const StRecordBtn = styled.button`
   border-radius: 5px;
   color: black;
   height: 50px;
-  width: 100px;
+  width: 70px;
   border: 0;
   margin: 10px;
+  margin-left: 900px;
   span {
     font-size: 20px;
     &:hover {
@@ -150,26 +100,37 @@ const StTempBoxOutline = styled.div`
   display: flex;
   flex-wrap: wrap;
   text-align: center;
-  margin: 0 auto;
   white-space: normal;
   width: 1200px;
-  height: 2000px;
   border-radius: 5px;
   /* background-color: aliceblue; */
+  gap: 5px;
 `;
 
 const StTempBox = styled.div`
   /* justify-content: center; */
   /* align-items: center; */
-
   padding: 12px;
   width: 330px;
   height: 300px;
-  margin-bottom: 12px;
   /* flex-wrap: wrap; */
   margin-top: 10px;
-  overflow: scroll;
-  /* background-color: beige; */
+  overflow: auto;
+  div {
+    height: 50px;
+  }
+  background-color: #fafafa;
+`;
+
+const StImg = styled.img`
+  object-fit: cover;
+  width: 330px;
+  height: 200px;
+  border: 3px solid #fafafa;
+`;
+
+const StBody = styled.div`
+  overflow: hidden;
 `;
 
 const StbtnStyle = styled.button`

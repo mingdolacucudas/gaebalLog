@@ -1,67 +1,32 @@
 {
   "gaebalog": [
     {
-      "id": 1,
-      "nickname": "닉네임",
-      "title": "제목제목제목제목제목제목제목제목제목제목제목제목제목",
-      "body": "본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문본문",
-      "img": ""
+      "nickname": "개발봇",
+      "title": "리액트?",
+      "body": "리액트는.... 컴포넌트를....... ",
+      "img": "https://images.velog.io/images/forest0501/post/8b44094f-fce6-4665-9a53-4b1d2edaba91/reactLogo.jpeg",
+      "id": 1
     },
     {
-      "id": 2,
-      "nickname": "2222",
-      "title": "22222",
-      "body": "22222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222",
-      "img": ""
+      "nickname": "코딩봇",
+      "title": "자바스트립트란?",
+      "body": "자바스트립트는.....자바스트립트는.....자바스트립트는.....자바스트립트는.....자바스트립트는.....자바스트립트는.....자바스트립트는.....자바스트립트는.....자바스트립트는.....자바스트립트는.....자바스트립트는.....자바스트립트는.....자바스트립트는.....자바스트립트는.....자바스트립트는.....자바스트립트는.....",
+      "img": "https://blog.kakaocdn.net/dn/bNp5o1/btrgkT58S71/77YTYugRulRCb4jvo1HwlK/img.png",
+      "id": 2
     },
     {
-      "id": 3,
-      "nickname": "12312312321",
-      "title": "123213",
-      "body": "ㄴㅇㄹㅁㄴㅇㄹㅇㄴㅁㄹㄴㅁㅇㄹㅁㄴㅇㄹㅇㄴㅁㄹㅁㅇㄴㄹㅇㄴㅁ",
-      "img": ""
+      "nickname": "깃허브추적자",
+      "title": "깃허브?",
+      "body": "깃허브는.....깃허브는.....깃허브는.....깃허브는.....깃허브는.....깃허브는.....깃허브는.....깃허브는.....깃허브는.....깃허브는.....깃허브는.....깃허브는.....깃허브는.....깃허브는.....깃허브는.....",
+      "img": "https://images.velog.io/images/hongin/post/7a8054c2-e133-4d8e-8724-63e0d6d2d241/%E1%84%83%E1%85%A1%E1%84%8B%E1%85%AE%E1%86%AB%E1%84%85%E1%85%A9%E1%84%83%E1%85%B3%20(1).png",
+      "id": 3
     },
     {
-      "nickname": "safsdfasfas",
-      "title": "123123",
-      "body": "dafdfxczvcxvxcvcvzdafdfxczvcxvxcvcvzdafdfxczvcxvxcvcvzdafdfxczvcxvxcvcvzv",
-      "img": "",
+      "nickname": "리덕스파괴자",
+      "title": "리덕스",
+      "body": "리덕스는.....리덕스는.....리덕스는.....리덕스는.....리덕스는.....리덕스는.....리덕스는.....",
+      "img": "https://images.velog.io/images/devgosunman/post/0b3fabdc-da00-4181-a295-ed448d49cef6/React_Redux.png",
       "id": 4
-    },
-    {
-      "nickname": "dfsfewfwef",
-      "title": "5555555",
-      "body": "ccxvxzvcxvczxvvzvccxvxzvcxvczxvvzvccxvxzvcxvczxvvzvccxvxzvcxvczxvvzvccxvxzvcxvczxvvzvccxvxzvcxvczxvvzvccxvxzvcxvczxvvzv",
-      "img": "",
-      "id": 5
-    },
-    {
-      "nickname": "sdfdsafdasf",
-      "title": "21323",
-      "body": "dsfsfxzxcvcvsadvdsavadsvdasvasdvavvda",
-      "img": "",
-      "id": 6
-    },
-    {
-      "nickname": "sdafasdf",
-      "title": "23123",
-      "body": "asdfasdf",
-      "img": "",
-      "id": 7
-    },
-    {
-      "nickname": "sadfasdf",
-      "title": "31232",
-      "body": "asdgsgagdsgdgadsgdsg",
-      "img": "",
-      "id": 8
-    },
-    {
-      "nickname": "asdfsdafasdf",
-      "title": "123213213",
-      "body": "sdafasdfasdfasdf",
-      "img": "",
-      "id": 9
     }
   ],
   "comments": [
