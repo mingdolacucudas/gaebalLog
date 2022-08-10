@@ -10,9 +10,9 @@ export default Layout;
 const StLayout = styled.div`
   margin: 0 auto;
   width: 1200px;
-  /* max-width: 1200px;
+  max-width: 1200px;
   min-width: 800px;
-  min-height: 100vh; */
+  min-height: 100vh;
 
   /* background-image: linear-gradient(
     to bottom,
