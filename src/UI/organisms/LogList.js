@@ -34,6 +34,7 @@ const LogList = () => {
           hoverBackgroundColor="black"
           width="6rem"
         >
+
           글작성 하기
         </StBtn>
       </StIconBox>
@@ -62,6 +63,7 @@ const LogList = () => {
         })}
       </StTempBoxOutline>
     </StOne>
+
   );
 };
 
