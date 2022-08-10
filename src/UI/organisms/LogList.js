@@ -29,7 +29,9 @@ const LogList = () => {
             navi("/post");
           }}
         >
-          <StBtn hoverColor="grey">글작성 하기</StBtn>
+          <StBtn hoverColor="grey" backgroundColor="black" color="white">
+            글작성 하기
+          </StBtn>
         </StIconBox>
         <StTempBoxOutline>
           {reverse.map((x) => {
