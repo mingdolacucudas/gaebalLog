@@ -14,65 +14,16 @@ import {
 
 const Comment = () => {
   const param = useParams();
-<<<<<<< HEAD
-  console.log(param);
-  const navigate = useNavigate();
-
-  const [comments, setComments] = useState(null);
-
-  //get 요청  = 댓글(http://localhost:3001/comments)
-  const fetchComment = async () => {
-    const { data } = await axios.get("http://localhost:3001/comments");
-    setComments(data);
-    console.log(data);
-  };
-
-  //post 요청
-  const [comment, setComment] = useState({
-=======
   const dispatch = useDispatch();
   const data = useSelector((state) => {
     return state.commentSlice.comments;
   });
   const [{ nickname, comment }, onChange, reset, toggle] = useInputs({
->>>>>>> af127db7f329a1597f70757fb3b516944de4b0f5
     nickname: "",
     comment: "",
     comment_id: param.id,
     id: 0,
   });
-<<<<<<< HEAD
-  const onSubmitHandler = (comment) => {
-    axios.post("http://localhost:3001/comments", comment);
-    // navigate(`/detail/${param.id}`);
-  };
-  //delete 요청
-  const onClickDeleteButtonHandler = (deleteComment) => {
-    axios.delete(`http://localhost:3001/comments/${deleteComment}`);
-  };
-
-  // //edit 요청 - 미완성
-  const [targetId, setTargetId] = useState({
-    comment_id: param.id,
-  });
-  const [editComment, setEditComment] = useState({
-    nickname: "",
-    comment: "",
-    comment_id: param.id,
-    id: 0,
-  });
-
-  const onClickEditButtonHandler = (editId, t) => {
-    axios.patch(`http://localhost:3001/comments/${editId}`, t);
-  };
-
-  //useEffect
-  useEffect(() => {
-    fetchComment();
-  }, [comment]);
-  console.log(param.id);
-
-=======
   const commentData = { nickname, comment, comment_id: param.id };
 
   const [modal, setModal] = useState(false);
@@ -89,38 +40,20 @@ const Comment = () => {
   useEffect(() => {
     dispatch(fetchComments());
   }, []);
->>>>>>> af127db7f329a1597f70757fb3b516944de4b0f5
   return (
     <div>
       <form
         onSubmit={(e) => {
-<<<<<<< HEAD
-          e.preventDefault();
-          onSubmitHandler(comment);
-          setComment();
-=======
           onSubmitHandler(e);
->>>>>>> af127db7f329a1597f70757fb3b516944de4b0f5
         }}
       >
         <label>닉네임</label>
         <input
           type="text"
           placeholder="닉네임"
-<<<<<<< HEAD
-          onChange={(x) => {
-            const { value } = x.target;
-            setComment({
-              ...comment,
-              nickname: value,
-              comment_id: param.id,
-            });
-          }}
-=======
           name="nickname"
           value={nickname}
           onChange={onChange}
->>>>>>> af127db7f329a1597f70757fb3b516944de4b0f5
         />
         <label>댓글입력</label>
         <input
@@ -158,70 +91,6 @@ const Comment = () => {
                   수정하기
                 </button>
 
-<<<<<<< HEAD
-        <div>
-          {/* //map 에 물음표(?)는 옵셔널 체이닝이다 */}
-          {comments?.map((c) => {
-            if (c.comment_id === param.id) {
-              return (
-                <div key={c.id}>
-                  닉네임:{c.nickname} - 댓글내용:{c.comment} id:{c.id}{" "}
-                  comment_id:
-                  {c.comment_id}
-                  <button
-                    type="button"
-                    onClick={() => {
-                      onClickDeleteButtonHandler(c.id);
-                      // navigate("/");
-                    }}
-                  >
-                    댓글삭제
-                  </button>
-                  <form
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      onSubmitHandler(comment);
-                    }}
-                  >
-                    <input
-                      type="text"
-                      placeholder="수정하고싶은 id"
-                      onChange={(c) => {
-                        setTargetId(c.target.value);
-                        //수정후에도 nickname, id, comment_id 값 고정시키기
-                        setEditComment({
-                          ...comment,
-                          comment: c.target.value,
-                        });
-                        console.log(c);
-                      }}
-                    />
-                    <input
-                      type="text"
-                      placeholder="댓글수정"
-                      onChange={(c) => {
-                        setEditComment({
-                          ...comment,
-                          comment: c.target.value,
-                        });
-                      }}
-                    />
-                    <button
-                      type="button"
-                      onClick={() =>
-                        onClickEditButtonHandler(targetId, editComment)
-                      }
-                    >
-                      댓글수정
-                    </button>
-                  </form>
-                </div>
-              );
-            }
-          })}
-        </div>
-      </form>
-=======
                 {selectedIndex === i && modal && (
                   <Modal
                     commentId={c.id}
@@ -236,7 +105,6 @@ const Comment = () => {
           }
         })}
       </div>
->>>>>>> af127db7f329a1597f70757fb3b516944de4b0f5
     </div>
   );
 };

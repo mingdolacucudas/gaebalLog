@@ -14,7 +14,7 @@ const darkTheme = {
 
 const lightTheme = {
   textColor: "#111",
-  // backgroundColor: "whitesmoke",
+  // backgroundColor: "#f0f0f0",
 };
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

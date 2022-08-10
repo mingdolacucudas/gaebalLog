@@ -72,7 +72,7 @@ const LogList = () => {
 
   return (
     <div>
-      <StFather>
+      <StOne>
         <StRecordBtn
           onClick={() => {
             navi("/post");
@@ -82,7 +82,7 @@ const LogList = () => {
         </StRecordBtn>
         <p></p>
         <div>
-          <StList>
+          <StTempBoxOutline>
             {dbData.map((x) => {
               return (
                 <StTempBox
@@ -91,137 +91,93 @@ const LogList = () => {
                     navi(`/detail/${x.id}`);
                   }}
                 >
-                  <div>{x.id}</div>
-                  <div>{x.nickname}</div>
-                  <div>{x.title}</div>
-                  <div>{x.body}</div>
-                  <div>{x.image}</div>
+                  <form>
+                    <div>{x.id}</div>
+                    <div>{x.nickname}</div>
+                    <div>{x.title}</div>
+                    <div>{x.body}</div>
+                    <div>{x.image}</div>
+                  </form>
                   <StbtnStyle>See more...</StbtnStyle>
                 </StTempBox>
               );
             })}
-          </StList>
+          </StTempBoxOutline>
         </div>
-      </StFather>
+      </StOne>
     </div>
   );
 };
 
-const rotationAnimation = keyframes`
-  0% {
-    transform:rotate(0deg);
-    border-radius:0px;
-  }
-  50% {
-    border-radius:100px;
-  }
-  100%{
-    transform:rotate(360deg);
-    border-radius:15px;
-  }
-`;
-
-const StFather = styled.div`
+const StOne = styled.div`
   display: block;
+  box-sizing: border-box;
   width: 1200px;
   height: 800px;
-  flex-wrap: wrap;
   margin: 20px 0px 10px 30px;
   flex-direction: row;
   justify-content: row;
   justify-content: flex-start;
-
-  font-family: "InkLipquid";
 `;
 
 const StRecordBtn = styled.button`
-  display: block;
-  justify-content: row;
-  justify-content: space-between;
   display: flex;
   flex-wrap: wrap;
-
+  border-radius: 5px;
   color: black;
-  height: 100px;
+  height: 50px;
   width: 100px;
-  background-color: #439889;
   border: 0;
-  border-radius: 15px;
   margin: 10px;
   span {
     font-size: 20px;
     &:hover {
-      font-size: 48px;
+      font-size: 22px;
     }
     &:active {
-      opacity: 0;
+      opacity: 10;
     }
   }
   cursor: pointer;
-  animation: ${rotationAnimation} 3s;
   justify-content: space-around;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(145deg, #439889, #ffffff);
-  box-shadow: 9px 9px 18px #e0e0e0, -9px -9px 18px #ffffff;
+  /* background: linear-gradient(145deg, #439889, #ffffff);
+  box-shadow: 9px 9px 18px #e0e0e0, -9px -9px 18px #ffffff; */
 `;
 
-const StList = styled.div`
+const StTempBoxOutline = styled.div`
   display: flex;
-  gap: 20px;
-  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  margin: 0 auto;
+  white-space: normal;
+  width: 1200px;
+  height: 2000px;
+  border-radius: 5px;
+  background-color: aliceblue;
 `;
 
 const StTempBox = styled.div`
-  flex-direction: row;
-  justify-content: row;
-  justify-content: center;
-  align-items: center;
-
-  border-radius: 18px;
-  background: linear-gradient(145deg, #c8e6c9, #ffffff);
-  box-shadow: 9px 9px 18px #e0e0e0, -9px -9px 18px #ffffff;
+  /* justify-content: center; */
+  /* align-items: center; */
 
   padding: 12px;
-  height: 300px;
-  border: 1px solid rgb(221, 221, 221);
-  background-color: rgb(255, 255, 255);
-  border-radius: 12px;
   width: 330px;
+  height: 300px;
   margin-bottom: 12px;
-  background-color: #c8e6c9;
-
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   margin-top: 10px;
-  display: flex;
-
-  div {
-    overflow: hidden;
-    height: 50px;
-  }
+  overflow: scroll;
+  background-color: beige;
 `;
 
 const StbtnStyle = styled.button`
-  color: white;
-  background: teal;
+  color: black;
   padding: 0.375rem 0.75rem;
-  border: 1px solid;
-  border-radius: 0.9rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  background: linear-gradient(145deg, #439889, #ffffff);
-  box-shadow: 9px 9px 18px #e0e0e0, -9px -9px 18px #ffffff;
+  border: 1px;
+  border-radius: 5px;
   cursor: pointer;
-  animation: ${rotationAnimation} 1s;
-`;
-
-const StMain = styled.div`
-  border-radius: 18px;
-  background: linear-gradient(145deg, #e6e6e6, #ffffff);
-  box-shadow: 9px 9px 18px #e0e0e0, -9px -9px 18px #ffffff;
-  width: 50%;
-  padding: 5px;
-  margin-bottom: 10px;
 `;
 
 export default LogList;
