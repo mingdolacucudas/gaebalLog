@@ -43,7 +43,7 @@ function EditForm({ logInfo, setModal }) {
             value={editLog.body}
             required
           />
-          <ImgBox src={editLog.img} height="10vh" />
+          <ImgBox src={editLog.img} height="12%" />
           <label>사진올리기</label>
           <Input
             name="img"
@@ -91,7 +91,7 @@ const StModalContainer = styled.div`
   align-items: center;
 
   width: 50rem;
-  height: 65vh;
+  height: 40rem;
 
   margin: 8% auto 0 auto;
 
@@ -100,13 +100,16 @@ const StModalContainer = styled.div`
 `;
 
 const Form = styled.form`
-  background-color: white;
   margin-top: 5%;
   width: 90%;
+  height: 90%;
   & label {
     display: block;
     margin-bottom: 20px;
     padding-left: 5px;
+  }
+  & label:nth-of-type(2) {
+    margin-top: 20px;
   }
 `;
 const Input = styled.input`
@@ -146,5 +149,5 @@ const BtnContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 10px;
-  margin-top: 20px;
+  margin-top: 30px;
 `;
