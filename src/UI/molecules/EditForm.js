@@ -1,22 +1,24 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-
 import { StBtn } from "../atoms/StBtn";
 import { useDispatch } from "react-redux";
 import { updatePost } from "../../redux/modules/post";
 import useInputs from "../../hooks/useInput";
 import { StImgBox } from "../atoms/StImgBox";
 function EditForm({ logInfo, setModal }) {
-  const [editLog, setEditLog] = useState(logInfo); //state에 logInfo(부모로부터 받은 porops)
-
   const dispatch = useDispatch();
-  const [{ nickname, title, body, img }, onChange, reset, toggle] = useInputs({
-    nickname: logInfo.nickname,
+  const [{ title, body, img }, onChange, reset, toggle] = useInputs({
     title: logInfo.title,
     body: logInfo.body,
     img: logInfo.img,
   });
-  let logData = { nickname, title, body, img };
+  let logData = {
+    nickname: logInfo.nickname,
+    title,
+    body,
+    img,
+    id: parseInt(logInfo.id),
+  };
 
   return (
     <StModal>
@@ -24,7 +26,6 @@ function EditForm({ logInfo, setModal }) {
         <Form
           onSubmit={() => {
             let postId = logInfo.id;
-            let logData = editLog;
             dispatch(updatePost({ postId, logData }));
             alert("수정이 완료되었습니다");
           }}
@@ -32,26 +33,26 @@ function EditForm({ logInfo, setModal }) {
           <Input
             name="title"
             placeholder="제목을 입력해주세요"
-            onChange={(e) => setEditLog({ ...editLog, title: e.target.value })}
-            value={editLog.title}
+            onChange={onChange}
+            value={title}
             required
           />
           <label>By {logInfo.nickname}</label>
           <Text
             name="body"
             placeholder="본문 내용을 입력해주세요"
-            onChange={(e) => setEditLog({ ...editLog, body: e.target.value })}
-            value={editLog.body}
+            onChange={onChange}
+            value={body}
             required
           />
-          <StImgBox src={editLog.img} height="12%" />
+          <StImgBox src={img} height="12%" />
           <label>사진올리기</label>
           <Input
             name="img"
             placeholder="이미지 주소를 넣어주세요"
             type="url"
-            onChange={(e) => setEditLog({ ...editLog, img: e.target.value })}
-            value={editLog.img}
+            onChange={onChange}
+            value={img}
           />
           <BtnContainer>
             <StBtn backgroundColor="black" color="white">
