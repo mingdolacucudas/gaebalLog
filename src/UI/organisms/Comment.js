@@ -23,7 +23,7 @@ const Comment = () => {
     <CommentContainer>
       <PostComment />
       {data.map((c, i) => {
-        if (String(c.comment_id) === param.id) {
+        if (String(c.comment_id) == param.id) {
           return (
             <div key={c.id}>
               <ListComment
