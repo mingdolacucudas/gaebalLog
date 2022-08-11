@@ -64,13 +64,14 @@ const data = useSelector((state) => state.commentSlice.comments);
                         (element) =>
                           parseInt(element.comment_id) === parseInt(log.id)
                       );
-                      found = found.id;
+                      
                       if (found === undefined) {
                         if (window.confirm("정말로 삭제하시겠습니까?")) {
                           dispatch(deletePost(log.id)).then(nav("/"));
                         }
                       } else {
                         if (window.confirm("정말로삭제하시겠습니까?")) {
+                          found = found.id;
                           dispatch(deletePost(log.id));
                           dispatch(deleteComment(found)).then(nav("/"));
                         }
