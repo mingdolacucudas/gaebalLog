@@ -10,13 +10,14 @@ import { StInput } from "../atoms/StInput";
 
 const PostComment = () => {
   const param = useParams();
+  const search = parseInt(param.id);
   const dispatch = useDispatch();
 
   const [{ nickname, comment }, onChange, reset, toggle] = useInputs({
     nickname: "",
     comment: "",
   });
-  const commentData = { nickname, comment, comment_id: param.id };
+  const commentData = { nickname, comment, comment_id: search };
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
