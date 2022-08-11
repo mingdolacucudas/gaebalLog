@@ -11,6 +11,7 @@ import { fetchPosts, deletePost } from "../../redux/modules/post";
 
 import EditForm from "../molecules/EditForm";
 import Comment from "../organisms/Comment";
+import { deleteComment } from "../../redux/modules/comment";
 
 const SingleLog = () => {
   //const [log, setLog] = useState(null); //json server의 값을 불러오기 위해 useState선언
@@ -18,7 +19,7 @@ const SingleLog = () => {
   const dispatch = useDispatch();
   const nav = useNavigate();
   const log = useSelector((state) => state.postSlice.posts);
-
+const data = useSelector((state) => state.commentSlice.comments);
   //!겟함수
 
   // 생성한 함수를 컴포넌트가 mount됐을 때 실행하기 위해 useEffect사용
@@ -57,12 +58,24 @@ const SingleLog = () => {
                   >
                     수정
                   </StBtn>
-                  <StBtn
-                    onClick={() =>
-                      window.confirm("정말로 삭제하시겠습니까?")
-                        ? dispatch(deletePost(log.id)).then(nav("/"))
-                        : null
-                    }
+                   <StBtn
+                    onClick={() => {
+                      let found = data.find(
+                        (element) =>
+                          parseInt(element.comment_id) === parseInt(log.id)
+                      );
+                      found = found.id;
+                      if (found === undefined) {
+                        if (window.confirm("정말로 삭제하시겠습니까?")) {
+                          dispatch(deletePost(log.id)).then(nav("/"));
+                        }
+                      } else {
+                        if (window.confirm("정말로삭제하시겠습니까?")) {
+                          dispatch(deletePost(log.id));
+                          dispatch(deleteComment(found)).then(nav("/"));
+                        }
+                      }
+                    }}
                     color="gray"
                     hoverColor="#aa1408"
                   >
